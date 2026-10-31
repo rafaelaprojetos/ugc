@@ -43,7 +43,7 @@ O site está em **modo placeholder**: o layout já tem o tamanho real de cada m�
 uma moldura listrada com o nome do slot enquanto o arquivo não existe. Nada pula quando a
 mídia entra.
 
-- Componentes: `<SlotVideo>`, `<SlotFoto>`, `<SlotLogo>`, `<Sticker>` — todos recebem só o `id` do slot.
+- Componentes: `<SlotVideo>`, `<SlotFoto>`, `<SlotLogo>` — todos recebem só o `id` do slot.
   Sem arquivo → `<PlaceholderMidia>`. Com arquivo → a mídia de verdade. Nenhum `if` na seção.
 - Detecção automática: o plugin `plugins/midias.ts` varre `/public/assets` e gera o módulo
   virtual `virtual:midias`. Em dev, colocar ou tirar arquivo recarrega a página sozinho.
@@ -52,10 +52,20 @@ mídia entra.
 - Vídeo 9:16, `rounded-video` (28px), `preload="none"`, poster obrigatório, lazy.
   Desktop: hover toca mudo; clique abre modal em tela cheia com som e controles. Mobile: toque abre o modal.
   Isso tudo já está dentro do `<SlotVideo>` — não reimplementar por seção.
-- Vídeo até ~4MB, H.264 720p; imagens em WebP — `npm run midias -- --processar` faz os dois
-  e gera os posters. Os originais vão para `public/assets/_originais/`.
-- `npm run build` roda o processamento antes de compilar. Sem ffmpeg ele avisa e segue
-  (é o que acontece na Vercel: os arquivos já vão processados no repositório).
+- Vídeo H.264 720p (lado maior 1280), poster JPEG. Os originais ficam na pasta
+  `VIDEOS DO SITE/`, na raiz do projeto, que o git ignora — uma gaveta numerada por aba.
+  `npm run importar` lê as gavetas, comprime, gera os posters e grava direto nos slots.
+  Ordem dentro da gaveta = ordem alfabética do nome do arquivo.
+- **Esta máquina não tem ffmpeg** e o do CapCut não roda fora do app (assinatura).
+  `scripts/comprimir-video.m` e `scripts/tratar-imagem.m` resolvem com o AVFoundation e o
+  CoreGraphics do próprio macOS; o `npm run importar` compila os dois na hora.
+  O `avconvert` do sistema não serve: não deixa escolher a taxa de bits.
+- Teto de 90MB por vídeo: o GitHub recusa arquivo acima de 100MB. Vídeo longo demais para
+  caber recebe taxa menor automaticamente (`taxaPara` no `importar-midias.mjs`).
+- `npm run build` **não** processa mídia. O `scripts/midias.mjs --processar` continua
+  existindo para quem tiver ffmpeg, mas deixou o build: no servidor do GitHub o ffmpeg
+  existe, e ele recomprimiria os 87 minutos de vídeo a cada publicação.
+- `sips` lê WebP mas não grava. Por isso logo é PNG (precisa de transparência) e foto é JPEG.
 - `prefers-reduced-motion` desliga loops (hook `usePrefereMenosMovimento` + bloco no `index.css`).
 
 ### Animação de entrada
@@ -78,6 +88,8 @@ evento pode ficar invisível para sempre se o evento não vier. Número animado 
 - O listener de `EVENTO_ABRIR` é registrado **antes** de qualquer `return` do efeito — senão
   os botões de abrir param de funcionar depois que o popup já apareceu uma vez.
   Qualquer botão abre ele disparando `window.dispatchEvent(new CustomEvent(EVENTO_ABRIR))`.
+- Logo de marca com fundo próprio (letra clara sobre cor) entra em `logosQuePreenchem`
+  no `media.ts` e preenche o círculo; os demais ficam recortados sobre o círculo rosa-claro.
 - O nome da marca de cada vídeo fica em `marcasDosVideos` no `media.ts` — um lugar só,
   porque nome de marca não muda de idioma. Vazio = a etiqueta não aparece.
 - O WhatsApp em `media.ts` é um **link inteiro**, não um número. A tela mostra uma chamada
@@ -90,14 +102,13 @@ Mesma ideia vale para seções novas: string vazia = elemento some, sem quebrar 
 
 ### Listas que viram seção
 
-Subformatos (`subformatos`), marcas (`marcas`) e stickers (`stickers`) são **listas** em
-`media.ts`. A seção mapeia a lista; os nomes exibidos ficam no pt/en.json com a mesma chave.
+Subformatos (`subformatos`) e marcas (`marcas`) são **listas** em `media.ts`. A seção mapeia a lista; os nomes exibidos ficam no pt/en.json com a mesma chave.
 Para acrescentar um subformato: uma linha em `media.ts` + o nome nos dois JSONs + a pasta em
 `public/assets/videos/<pasta>/`. Nenhum componente muda. Testado.
 
 ### Página /slots
 
-`http://localhost:5173/slots` lista os 68 slots em grade, com preenchido/vazio e o caminho
+`http://localhost:5173/slots` lista os slots em grade, com preenchido/vazio e o caminho
 esperado. **Só existe em desenvolvimento** — no build o trecho é removido pelo tree-shaking
 (`import.meta.env.DEV`). Confirmar isso se mexer no `App.tsx`.
 
@@ -177,8 +188,10 @@ npm run build      # tsc + vite build
 npm run typecheck  # só os tipos
 npm run lint       # oxlint
 npm run midias     # lista quais slots têm arquivo e quais faltam
-npm run midias -- --processar   # comprime vídeos, gera posters, converte para WebP
 npm run midias -- --vazios      # só o que ainda falta
+npm run importar   # lê "VIDEOS DO SITE/", comprime e preenche os slots
+npm run importar -- --so 11     # só a gaveta 11
+npm run importar -- --refazer   # processa de novo o que já está pronto
 npm run icones     # regera cursor e favicons do emoji ✨
 npm run fontes     # rebaixa as fontes do Google para public/fontes/
 ```

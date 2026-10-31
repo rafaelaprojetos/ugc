@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/midias.mjs --processar && tsc -b && vite build && node scripts/paginas.mjs",
+    "build": "tsc -b && vite build && node scripts/paginas.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
     "icones": "node scripts/icones.mjs",
     "midias": "node scripts/midias.mjs",
+    "importar": "node scripts/importar-midias.mjs",
     "fontes": "node scripts/fontes.mjs",
     "paginas": "node scripts/paginas.mjs",
     "arquivo-unico": "VITE_ARQUIVO_UNICO=1 BASE_PATH= vite build && node scripts/arquivo-unico.mjs"
