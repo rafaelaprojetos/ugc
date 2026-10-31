@@ -36,3 +36,6 @@ para-subir-no-github/
 
 # configuração local do Claude Code
 .claude/
+
+# originais que você arrasta para cá — nunca vão para o GitHub
+/VIDEOS DO SITE/
