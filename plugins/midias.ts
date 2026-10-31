@@ -10,7 +10,8 @@ const EXT_POSTER = ['.webp', '.jpg', '.png']
 const PASTAS_IGNORADAS = new Set(['_originais', 'node_modules'])
 
 export type ArquivoDeSlot = {
-  /** caminho público, pronto para usar em src="" */
+  /** caminho relativo à raiz do site, SEM barra inicial. Quem prefixa a base
+   *  (que muda entre domínio próprio e GitHub Pages) é src/lib/midias.ts. */
   src: string
   /** thumbnail do vídeo, quando existir */
   poster?: string
@@ -70,14 +71,14 @@ export function resolverSlots(raizPublic: string): Record<string, ArquivoDeSlot>
     )
     const escolhido = validos[0]
 
-    const entrada: ArquivoDeSlot = { src: `/assets/${escolhido.relativo}` }
+    const entrada: ArquivoDeSlot = { src: `assets/${escolhido.relativo}` }
     if (!escolhido.naPastaCerta) entrada.foraDoLugar = true
 
     if (slot.tipo === 'video') {
       for (const ext of EXT_POSTER) {
         const poster = path.join(raizAssets, pastaPosters, slot.id + ext)
         if (existsSync(poster)) {
-          entrada.poster = `/assets/${pastaPosters}/${slot.id}${ext}`
+          entrada.poster = `assets/${pastaPosters}/${slot.id}${ext}`
           break
         }
       }

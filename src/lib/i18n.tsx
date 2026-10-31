@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { site } from '@/content/media'
 import type { Idioma } from '@/content/types'
 import {
   CHAVE_STORAGE,
@@ -10,6 +9,7 @@ import {
   idiomaInicial,
   type ContextoI18n,
 } from '@/lib/i18n-contexto'
+import { caminhoDoIdioma } from '@/lib/midias'
 import { secaoNoTopo } from '@/lib/secoes'
 import { aplicarSeo } from '@/lib/seo'
 
@@ -27,7 +27,7 @@ export function ProvedorIdioma({ children }: { children: ReactNode }) {
     } catch {
       /* sem persistência, sem problema */
     }
-    const destino = site.caminhos[novo] + window.location.hash
+    const destino = caminhoDoIdioma(novo) + window.location.hash
     if (window.location.pathname + window.location.hash !== destino) {
       window.history.pushState(null, '', destino)
     }
@@ -51,7 +51,7 @@ export function ProvedorIdioma({ children }: { children: ReactNode }) {
   // Chegou em "/" (ou caminho desconhecido): normaliza para /pt ou /en
   useEffect(() => {
     if (idiomaDoCaminho(window.location.pathname)) return
-    window.history.replaceState(null, '', site.caminhos[idioma] + window.location.hash)
+    window.history.replaceState(null, '', caminhoDoIdioma(idioma) + window.location.hash)
   }, [idioma])
 
   // Botão voltar/avançar do navegador troca o idioma junto

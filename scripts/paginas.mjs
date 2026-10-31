@@ -24,6 +24,13 @@ const pt = JSON.parse(await readFile(path.join(raiz, 'src/content/pt.json'), 'ut
 const en = JSON.parse(await readFile(path.join(raiz, 'src/content/en.json'), 'utf8'))
 const { site } = await import('../src/content/media.ts')
 
+// Onde o site vai morar de verdade. O workflow preenche com o que o Pages informa.
+const base = process.env.BASE_PATH ? `/${process.env.BASE_PATH.replace(/^\/|\/$/g, '')}/` : '/'
+const origem = (process.env.SITE_URL || site.dominio).replace(/\/$/, '')
+// CNAME só quando você realmente for usar domínio próprio — no endereço
+// github.io ele atrapalha. O workflow define isso a partir das Settings do Pages.
+const dominioProprio = process.env.CNAME_DOMINIO || ''
+
 const html = await readFile(path.join(dist, 'index.html'), 'utf8')
 
 /** Troca o conteúdo de uma meta/link no HTML. */
@@ -35,8 +42,8 @@ function trocar(texto, seletor, atributo, valor) {
 
 function paginaDoIdioma(idioma) {
   const c = idioma === 'pt' ? pt : en
-  const canonica = site.dominio + site.caminhos[idioma]
-  const capa = site.dominio + c.seo.ogImage
+  const canonica = `${origem}${base}${idioma}`
+  const capa = origem + base + c.seo.ogImage.replace(/^\//, '')
 
   let saida = html
   saida = saida.replace(/<html lang="[^"]*"/, `<html lang="${c.seo.lang}"`)
@@ -64,8 +71,35 @@ for (const idioma of ['pt', 'en']) {
 await writeFile(path.join(dist, '404.html'), paginaDoIdioma('pt'))
 console.log('  ok  dist/404.html')
 
-await writeFile(path.join(dist, 'CNAME'), `${new URL(site.dominio).hostname}\n`)
-console.log(`  ok  dist/CNAME (${new URL(site.dominio).hostname})`)
+if (dominioProprio) {
+  await writeFile(path.join(dist, 'CNAME'), `${dominioProprio}\n`)
+  console.log(`  ok  dist/CNAME (${dominioProprio})`)
+} else {
+  console.log('  --  sem CNAME (defina CNAME_DOMINIO para usar domínio próprio)')
+}
 
 await writeFile(path.join(dist, '.nojekyll'), '')
 console.log('  ok  dist/.nojekyll')
+
+// sitemap e robots apontando para onde o site realmente está
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+${['pt', 'en']
+  .map(
+    (idioma) => `  <url>
+    <loc>${origem}${base}${idioma}</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${origem}${base}pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="${origem}${base}en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${origem}${base}pt" />
+    <changefreq>monthly</changefreq>
+  </url>`,
+  )
+  .join('\n')}
+</urlset>
+`
+await writeFile(path.join(dist, 'sitemap.xml'), sitemap)
+await writeFile(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origem}${base}sitemap.xml\n`)
+console.log(`  ok  dist/sitemap.xml e robots.txt (${origem}${base})`)

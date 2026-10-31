@@ -1,4 +1,9 @@
 # Publica o site no GitHub Pages a cada push na branch main.
+#
+# Ele descobre sozinho onde o site vai morar:
+#   - endereço do GitHub (usuario.github.io/portfolio) → base /portfolio/
+#   - domínio próprio configurado em Settings → Pages  → base /
+# Você não precisa mexer em nada aqui.
 name: Publicar no GitHub Pages
 
 on:
@@ -11,7 +16,6 @@ permissions:
   pages: write
   id-token: write
 
-# Se dois deploys começarem juntos, o mais novo ganha
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -27,16 +31,20 @@ jobs:
           node-version: 22
           cache: npm
 
+      # precisa vir ANTES do build: é daqui que sai o endereço do site
+      - uses: actions/configure-pages@v5
+        id: pages
+
       - run: npm ci
 
       - name: Construir o site
         run: npm run build
         env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          SITE_URL: ${{ steps.pages.outputs.origin }}
           # Cadastre em: Settings → Secrets and variables → Actions
           VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
           VITE_HCAPTCHA_SITEKEY: ${{ secrets.VITE_HCAPTCHA_SITEKEY }}
-
-      - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:

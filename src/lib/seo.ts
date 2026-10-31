@@ -1,5 +1,5 @@
-import { site } from '@/content/media'
 import type { Conteudo, Idioma } from '@/content/types'
+import { base, caminhoDoIdioma } from '@/lib/midias'
 
 function meta(seletor: string, valor: string) {
   document.head.querySelector(seletor)?.setAttribute('content', valor)
@@ -9,8 +9,12 @@ function link(seletor: string, valor: string) {
   document.head.querySelector(seletor)?.setAttribute('href', valor)
 }
 
+/**
+ * O endereço canônico é o de onde o site está servido de verdade — assim vale
+ * tanto no domínio próprio quanto no endereço do GitHub Pages, sem configurar.
+ */
 export function urlCanonica(idioma: Idioma) {
-  return site.dominio + site.caminhos[idioma]
+  return window.location.origin + caminhoDoIdioma(idioma)
 }
 
 /**
@@ -20,7 +24,7 @@ export function urlCanonica(idioma: Idioma) {
 export function aplicarSeo(c: Conteudo, idioma: Idioma) {
   const { seo } = c
   const canonica = urlCanonica(idioma)
-  const capa = site.dominio + seo.ogImage
+  const capa = window.location.origin + base + seo.ogImage.replace(/^\//, '')
 
   document.documentElement.lang = seo.lang
   document.title = seo.title
