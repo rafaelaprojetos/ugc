@@ -30,3 +30,9 @@ dist-ssr
 
 # arquivo único gerado por npm run arquivo-unico
 portfolio-index.html
+
+# arquivo pronto para upload manual
+para-subir-no-github/
+
+# configuração local do Claude Code
+.claude/
