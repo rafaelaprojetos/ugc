@@ -1,0 +1,420 @@
+@import 'tailwindcss';
+
+/* =========================================================
+   FONTES HOSPEDADAS AQUI
+   Baixadas do Google Fonts (ambas em licença SIL OFL, que permite isso).
+   Vantagem: nada bloqueia a renderização esperando um domínio de fora,
+   e a CSP não precisa liberar fonts.googleapis.com nem fonts.gstatic.com.
+   Para atualizar: npm run fontes
+   ========================================================= */
+
+/* Bricolage Grotesque 800 · latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fontes/bricolage-grotesque-800-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* Bricolage Grotesque 800 · latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fontes/bricolage-grotesque-800-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Inter variável 400-700 · latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fontes/inter-variavel-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* Inter variável 400-700 · latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fontes/inter-variavel-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* =========================================================
+   TOKENS — identidade visual "desktop fofo / colagem / Y2K"
+   Tudo que é cor, fonte, raio e sombra mora aqui.
+   ========================================================= */
+@theme {
+  /* Cores */
+  --color-rosa: #e89ad2;
+  --color-rosa-claro: #edbbd8;
+  --color-lilas: #b8b0f6;
+  --color-lima: #ddea5c;
+  --color-bege: #e7dfd5;
+  --color-tinta: #111111;
+  --color-branco: #ffffff;
+
+  /* Céu (gradiente de fundo das seções) */
+  --color-ceu-inicio: #a9c4e8;
+  --color-ceu-meio: #c9d6ee;
+  --color-ceu-fim: #ece6f2;
+
+  /* Cases */
+  --color-offwhite: #f7f3ec;
+  --color-painel: #1c1b22;
+  --color-gasto: #ffb4ae;
+  --color-receita: #a9e6b6;
+  --color-roas: #ffe27a;
+
+  /* Balão de fala da capa */
+  --color-cinza-balao: #e8e8ed;
+  --color-azul-coracao: #4f9be8;
+
+  /* Bolinhas da janela macOS */
+  --color-mac-vermelho: #ff5f57;
+  --color-mac-amarelo: #febc2e;
+  --color-mac-verde: #28c840;
+
+  /* Tipografia */
+  --font-display: 'Bricolage Grotesque', 'Arial Black', ui-sans-serif, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Tamanhos gigantes de título (fluidos, mobile-first) */
+  --text-grande: clamp(2rem, 7vw, 3.5rem);
+  --text-grande--line-height: 0.95;
+  --text-gigante: clamp(2.75rem, 12vw, 6.5rem);
+  --text-gigante--line-height: 0.86;
+  --text-mega: clamp(3.25rem, 17vw, 10rem);
+  --text-mega--line-height: 0.82;
+
+  /* Raios */
+  --radius-video: 28px;
+  --radius-aba: 32px;
+  --radius-janela: 20px;
+  --radius-pill: 999px;
+
+  /* Sombras de colagem */
+  --shadow-colagem: 0 10px 30px -12px rgb(17 17 17 / 0.35);
+  --shadow-janela: 0 18px 40px -18px rgb(17 17 17 / 0.45);
+  --shadow-dura: 4px 4px 0 0 var(--color-tinta);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+@layer base {
+  :root {
+    /* Altura da barra fixa — usada no scroll-margin das seções */
+    --nav-h: 56px;
+    /* Margem lateral: 16px no mobile (regra 8) */
+    --gutter: 16px;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --nav-h: 68px;
+      --gutter: 32px;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ceu-fim);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    /* Regra 8: nunca rolar na horizontal no celular */
+    overflow-x: clip;
+  }
+
+  /* Cada seção para abaixo da barra fixa */
+  section[id] {
+    scroll-margin-top: calc(var(--nav-h) + 8px);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* Regra 7: foco sempre visível para navegação por teclado */
+  :focus-visible {
+    outline: 3px solid var(--color-tinta);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Regra 6: prefers-reduced-motion desliga loops e rolagem animada */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* =========================================================
+   UTILITÁRIOS DA IDENTIDADE
+   ========================================================= */
+
+/* Container padrão: 16px de margem lateral no mobile */
+@utility container-site {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Fundo céu com nuvens suaves */
+@utility fundo-ceu {
+  background-color: var(--color-ceu-inicio);
+  background-image:
+    radial-gradient(48% 38% at 14% 16%, rgb(255 255 255 / 0.8), rgb(255 255 255 / 0) 70%),
+    radial-gradient(38% 28% at 80% 8%, rgb(255 255 255 / 0.7), rgb(255 255 255 / 0) 72%),
+    radial-gradient(34% 26% at 90% 52%, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 70%),
+    radial-gradient(60% 42% at 44% 92%, rgb(255 255 255 / 0.65), rgb(255 255 255 / 0) 74%),
+    linear-gradient(
+      180deg,
+      var(--color-ceu-inicio) 0%,
+      var(--color-ceu-meio) 46%,
+      var(--color-ceu-fim) 100%
+    );
+}
+
+/* Textura de grão bem leve, por cima do céu */
+@utility textura-grao {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+}
+
+/* Palavra de título com contorno — garante leitura em qualquer cor de fita */
+@utility palavra-contorno {
+  -webkit-text-stroke: 0.055em var(--color-tinta);
+  paint-order: stroke fill;
+  text-shadow: 0.055em 0.07em 0 var(--color-tinta);
+}
+
+/* Flutuação dos stickers (regra 6: desligada em reduced-motion pelo @layer base) */
+@utility flutua {
+  animation: flutuar 6s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--giro, 0deg));
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(calc(var(--giro, 0deg) + 3deg));
+  }
+}
+
+/* Esconde visualmente, mantém para leitores de tela */
+@utility apenas-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* =========================================================
+   CURSOR ✨
+   Só em quem tem mouse de verdade: celular e tablet ficam de fora.
+   Ponto de clique no centro do brilho grande (62% x, 47% y).
+   PNGs gerados do emoji do sistema por `npm run icones`.
+   ========================================================= */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    cursor: url('/cursor/sparkle-32.png') 20 15, auto;
+    cursor:
+      image-set(url('/cursor/sparkle-32.png') 1x, url('/cursor/sparkle-64.png') 2x) 20 15,
+      auto;
+  }
+
+  /* Clicáveis: brilho um pouco maior (40x40) */
+  a,
+  button,
+  label,
+  summary,
+  select,
+  video,
+  [role='button'],
+  [tabindex]:not([tabindex='-1']) {
+    cursor: url('/cursor/sparkle-40.png') 25 19, pointer;
+    cursor:
+      image-set(url('/cursor/sparkle-40.png') 1x, url('/cursor/sparkle-80.png') 2x) 25 19,
+      pointer;
+  }
+
+  /* Campos de texto: mantém o brilho, mas o fallback vira "text" */
+  input:not([type='checkbox']):not([type='radio']):not([type='submit']),
+  textarea {
+    cursor: url('/cursor/sparkle-32.png') 20 15, text;
+    cursor:
+      image-set(url('/cursor/sparkle-32.png') 1x, url('/cursor/sparkle-64.png') 2x) 20 15,
+      text;
+  }
+
+  button:disabled,
+  [aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+}
+
+/* =========================================================
+   TOQUE E RESPONSIVIDADE
+   ========================================================= */
+
+/* Área de toque mínima de 44x44 (regra de mobile) */
+@utility alvo-toque {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Carrossel com swipe e snap no mobile */
+@utility carrossel {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+@utility carrossel-item {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
+
+/* Esconde a barra de rolagem do carrossel no WebKit */
+.carrossel::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  /* Títulos gigantes nunca cortam palavra no mobile (regra de mobile) */
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+}
+
+/* =========================================================
+   PLACEHOLDER DE MÍDIA
+   Moldura listrada que ocupa o tamanho real da mídia que vai entrar,
+   para nada pular no layout quando o arquivo chegar.
+   ========================================================= */
+@utility listrado {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--faixa-a, var(--color-rosa-claro)) 0 12px,
+    var(--faixa-b, var(--color-lilas)) 12px 24px
+  );
+}
+
+/* =========================================================
+   RESPIRAÇÃO DAS BOLINHAS DE MARCA
+   Cada bolinha cresce e encolhe no seu próprio ritmo,
+   para nenhuma pulsar junto com a outra.
+   ========================================================= */
+@utility respira {
+  animation: respirar var(--duracao, 3.5s) ease-in-out infinite;
+  animation-delay: var(--atraso, 0s);
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* =========================================================
+   EMOJIS VOANDO (#cases)
+   Deriva lenta e torta, cada um no seu tempo.
+   ========================================================= */
+@utility voa {
+  animation: voar var(--duracao, 14s) ease-in-out infinite;
+  animation-delay: var(--atraso, 0s);
+}
+
+@keyframes voar {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--giro, 0deg));
+  }
+  25% {
+    transform: translate3d(10px, -34px, 0) rotate(calc(var(--giro, 0deg) + 14deg));
+  }
+  50% {
+    transform: translate3d(-8px, -54px, 0) rotate(calc(var(--giro, 0deg) - 12deg));
+  }
+  75% {
+    transform: translate3d(-12px, -20px, 0) rotate(calc(var(--giro, 0deg) + 8deg));
+  }
+}
+
+
+/* =========================================================
+   PASTINHA (#formatos)
+   Aba colada no corpo da pasta, sem empilhar uma na outra.
+   ========================================================= */
+@utility aba-pasta {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -3px;
+  border: 3px solid var(--color-tinta);
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+}

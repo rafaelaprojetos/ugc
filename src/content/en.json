@@ -1,0 +1,431 @@
+{
+  "seo": {
+    "lang": "en",
+    "ogLocale": "en_US",
+    "title": "Rafaela Chagas | UGC Creator",
+    "description": "Rafaela Chagas, UGC creator. Vertical videos built to sell: viral formats, brand cases and campaign-ready deliverables.",
+    "ogImage": "/assets/og/capa.webp",
+    "ogImageAlt": "Rafaela Chagas, UGC creator"
+  },
+  "nav": {
+    "marca": "rafaela chagas",
+    "buscaPlaceholder": "search the portfolio",
+    "abrirMenu": "Open navigation menu",
+    "fecharMenu": "Close navigation menu",
+    "irParaConteudo": "Skip to content",
+    "navegacaoLabel": "Navigation",
+    "idiomaLabel": "Choose language",
+    "itens": [
+      {
+        "id": "inicio",
+        "label": "Home",
+        "arquivo": "home.app"
+      },
+      {
+        "id": "sobre",
+        "label": "About me",
+        "arquivo": "about-me.txt"
+      },
+      {
+        "id": "virais",
+        "label": "Most viral",
+        "arquivo": "most-viral.mp4"
+      },
+      {
+        "id": "formatos",
+        "label": "Formats",
+        "arquivo": "formats.psd"
+      },
+      {
+        "id": "cases",
+        "label": "Cases",
+        "arquivo": "cases.pdf"
+      },
+      {
+        "id": "entregaveis",
+        "label": "Deliverables",
+        "arquivo": "deliverables.zip"
+      },
+      {
+        "id": "contato",
+        "label": "Contact",
+        "arquivo": "contact.vcf"
+      }
+    ]
+  },
+  "secoes": {
+    "inicio": {
+      "janela": "rafaelacreator.com",
+      "nome": {
+        "primeira": "Rafaela",
+        "segunda": "Chagas"
+      },
+      "balao": "ugc creator",
+      "balaoAria": "Rafaela Chagas, UGC creator",
+      "capaAlt": "Rafaela Chagas, UGC creator",
+      "selo": {
+        "titulo": "I create ads worth",
+        "destaque": "+3 million a month"
+      }
+    },
+    "sobre": {
+      "janela": "about-me.mp4",
+      "fita": {
+        "palavra": "about me",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "texto": "I'm Rafa, a content creator since 2019 and founder of Seu Influencer, the biggest UGC platform in Brazil. I'm the one who turned UGC into a career here: I've taught over 50,000 people how to make videos for brands. My videos have pulled tens of millions of views and driven millions in ad sales.",
+      "videoLegenda": "meet Rafa",
+      "botao": {
+        "label": "See my most viral",
+        "alvo": "#virais"
+      }
+    },
+    "virais": {
+      "janela": "most-viral.mp4",
+      "fita": {
+        "palavra": "most viral",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "videos": [
+        {
+          "views": "1 million views"
+        },
+        {
+          "views": "12 million views"
+        },
+        {
+          "views": "29 million views"
+        },
+        {
+          "views": "8 million views"
+        },
+        {
+          "views": "600k views"
+        }
+      ]
+    },
+    "marcas": {
+      "janela": "brands.png",
+      "fita": {
+        "palavra": "completed projects",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "nomes": {
+        "bioderma": "Bioderma",
+        "banila-co": "Banila Co",
+        "claro": "Claro",
+        "keune": "Keune",
+        "hollyland": "Hollyland",
+        "petrizi": "Petrizi",
+        "truss": "Truss",
+        "grand-palladium": "Grand Palladium",
+        "capcut": "CapCut",
+        "brahma": "Brahma",
+        "ulanzi": "Ulanzi",
+        "qcy": "QCY",
+        "real-techniques": "Real Techniques",
+        "nutribullet": "Nutribullet",
+        "loreal": "L'Oréal",
+        "disney-plus": "Disney+"
+      }
+    },
+    "formatos": {
+      "janela": "formats.psd",
+      "fita": {
+        "palavra": "formats",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "tech": {
+        "fita": {
+          "palavra": "tech",
+          "corPalavra": "lima",
+          "corFita": "rosa"
+        }
+      },
+      "viagens": {
+        "fita": {
+          "palavra": "travel",
+          "corPalavra": "lilas",
+          "corFita": "lima"
+        },
+        "anterior": "Previous video",
+        "proximo": "Next video"
+      },
+      "subformatos": {
+        "personagem": "character",
+        "vlog": "vlog",
+        "contraste": "contrast",
+        "tiktok-shop": "tiktok shop",
+        "falando-com-a-camera": "talking head",
+        "dupla-criativa": "creative duo",
+        "anuncios": "ads"
+      }
+    },
+    "cases": {
+      "janela": "cases.pdf",
+      "fita": {
+        "palavra": "cases",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "painelRotulo": "ads manager",
+      "patrocinado": "Sponsored",
+      "verCase": "see case",
+      "rotulos": {
+        "gasto": "spend",
+        "receita": "revenue",
+        "roas": "ROAS",
+        "vendas": "sales",
+        "views": "views",
+        "instalacoes": "installs"
+      },
+      "lista": [
+        {
+          "marca": "",
+          "resultado": "+1 million in sales from a SINGLE ad + 3.0x ROAS",
+          "moldura": "dashboard",
+          "balao": {
+            "cor": "lilas",
+            "corTexto": "lima"
+          },
+          "metricas": {
+            "gasto": "R$ 340.00",
+            "receita": "R$ 1,020.00",
+            "roas": "3.00x",
+            "vendas": "3,599",
+            "views": "",
+            "instalacoes": ""
+          },
+          "link": ""
+        },
+        {
+          "marca": "",
+          "resultado": "+R$ 700K in sales and 4.10x ROAS from one creative",
+          "moldura": "dashboard",
+          "balao": {
+            "cor": "rosa",
+            "corTexto": "branco"
+          },
+          "metricas": {
+            "gasto": "R$ 177.5K",
+            "receita": "R$ 727.7K",
+            "roas": "4.10x",
+            "vendas": "2,413",
+            "views": "",
+            "instalacoes": ""
+          },
+          "link": ""
+        },
+        {
+          "marca": "",
+          "resultado": "+29 million views and +100K new app installs",
+          "moldura": "dashboard",
+          "balao": {
+            "cor": "offwhite",
+            "corTexto": "rosa"
+          },
+          "metricas": {
+            "gasto": "",
+            "receita": "",
+            "roas": "",
+            "vendas": "",
+            "views": "29M",
+            "instalacoes": "100K"
+          },
+          "link": ""
+        },
+        {
+          "marca": "Captions",
+          "resultado": "Running for 3 years straight without burning out. The best converter to date.",
+          "moldura": "anuncio",
+          "balao": {
+            "cor": "lima",
+            "corTexto": "rosa"
+          },
+          "metricas": {
+            "gasto": "",
+            "receita": "",
+            "roas": "",
+            "vendas": "",
+            "views": "",
+            "instalacoes": ""
+          },
+          "link": ""
+        }
+      ],
+      "emojis": [
+        "✍️",
+        "🎧",
+        "💰",
+        "🧠"
+      ]
+    },
+    "entregaveis": {
+      "janela": "deliverables.zip",
+      "fita": {
+        "palavra": "deliverables",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "abrir": "open",
+      "fechar": "close",
+      "cards": [
+        {
+          "arquivo": "ugc-videos.app",
+          "titulo": "UGC VIDEOS",
+          "cor": "lilas",
+          "itens": [
+            "UGC videos made for paid ads",
+            "Fresh accounts and daily posting"
+          ],
+          "redes": [],
+          "botao": {
+            "label": "",
+            "mensagem": ""
+          }
+        },
+        {
+          "arquivo": "creator.app",
+          "titulo": "CREATOR",
+          "cor": "lima",
+          "itens": [
+            "Collab"
+          ],
+          "redes": [
+            {
+              "chave": "instagram",
+              "nome": "Instagram"
+            },
+            {
+              "chave": "youtube",
+              "nome": "YouTube"
+            },
+            {
+              "chave": "tiktok",
+              "nome": "TikTok"
+            }
+          ],
+          "botao": {
+            "label": "",
+            "mensagem": ""
+          }
+        },
+        {
+          "arquivo": "seu-influencer.app",
+          "titulo": "SEU INFLUENCER",
+          "cor": "rosa",
+          "itens": [
+            "I connect your brand with creators on the biggest creator platform in Brazil"
+          ],
+          "redes": [],
+          "botao": {
+            "label": "Talk to Seu Influencer",
+            "mensagem": "Hi! I saw Rafa's portfolio and I'd like to connect my brand with creators."
+          }
+        }
+      ]
+    },
+    "saber": {
+      "janela": "things-to-know.txt",
+      "fita": {
+        "palavra": "you should know",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "itens": [
+        {
+          "texto": "I create {numero} of the ads for the most viral product on the internet.",
+          "numero": {
+            "ate": 100,
+            "sufixo": "%"
+          }
+        },
+        {
+          "texto": "That's +{numero} in revenue every month on Meta Ads.",
+          "numero": {
+            "ate": 3,
+            "sufixo": " million"
+          }
+        }
+      ]
+    },
+    "contato": {
+      "janela": "contact.vcf",
+      "fita": {
+        "palavra": "let's work together?",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "direto": {
+        "titulo": "Talk to me directly",
+        "emailLabel": "Email",
+        "whatsappLabel": "WhatsApp",
+        "assuntoEmail": "Quote — I saw your portfolio",
+        "whatsappChamada": "Message on WhatsApp",
+        "emailChamada": "Send an email",
+        "orcamentoLabel": "Quote",
+        "orcamentoChamada": "Request a quote"
+      },
+      "orcamento": {
+        "janela": "quote.app",
+        "chamada": "Want a quote? Drop your email and we'll get back to you."
+      }
+    }
+  },
+  "formulario": {
+    "email": {
+      "label": "Your email",
+      "placeholder": "you@yourbrand.com"
+    },
+    "enviar": "Get a quote",
+    "enviando": "Sending...",
+    "sucesso": "Got it! We'll reach out soon.",
+    "erroEnvio": "Couldn't send right now. Please try again in a moment.",
+    "erroEmail": "That email looks incomplete. Mind checking it?",
+    "erroIntervalo": "Easy there ✨ wait a few seconds before sending again.",
+    "erroConfig": "The form hasn't been set up yet.",
+    "lgpd": "We only use your email to send you the quote. No spam."
+  },
+  "video": {
+    "abrirLabel": "Open video fullscreen",
+    "fecharLabel": "Close video",
+    "tocandoMudo": "Playing muted — click to open with sound",
+    "semSuporte": "Your browser can't play this video."
+  },
+  "rodape": {
+    "direitos": "© 2026 Rafaela Chagas",
+    "redesLabel": "Social media",
+    "voltarAoTopo": "Back to top",
+    "redes": [
+      {
+        "chave": "instagram",
+        "nome": "Instagram"
+      },
+      {
+        "chave": "youtube",
+        "nome": "YouTube"
+      },
+      {
+        "chave": "tiktok",
+        "nome": "TikTok"
+      }
+    ]
+  },
+  "emConstrucao": "this section is being built",
+  "popup": {
+    "titulo": "Let's work together?",
+    "chamada": "Want a quote? Tell me where you prefer to talk and I’ll get back to you.",
+    "escolha": "How do you prefer to talk?",
+    "opcaoEmail": "By email",
+    "opcaoWhatsapp": "By WhatsApp",
+    "whatsappChamada": "Message me now and we'll sort it out there.",
+    "whatsappBotao": "Open WhatsApp",
+    "fechar": "Close",
+    "abrirDeNovo": "Get a quote"
+  }
+}

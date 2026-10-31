@@ -1,0 +1,16 @@
+{
+  "name": "Rafaela Chagas",
+  "short_name": "Rafaela Chagas",
+  "description": "Portfólio de Rafaela Chagas, UGC creator.",
+  "start_url": "/pt",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#E89AD2",
+  "background_color": "#ECE6F2",
+  "icons": [
+    { "src": "/icones/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icones/icone-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icones/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

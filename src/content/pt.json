@@ -1,0 +1,431 @@
+{
+  "seo": {
+    "lang": "pt-BR",
+    "ogLocale": "pt_BR",
+    "title": "Rafaela Chagas | UGC Creator",
+    "description": "Portfólio de Rafaela Chagas, UGC creator. Vídeos verticais que vendem: formatos virais, cases de marcas e entregáveis para campanhas.",
+    "ogImage": "/assets/og/capa.webp",
+    "ogImageAlt": "Rafaela Chagas, UGC creator"
+  },
+  "nav": {
+    "marca": "rafaela chagas",
+    "buscaPlaceholder": "buscar no portfólio",
+    "abrirMenu": "Abrir menu de navegação",
+    "fecharMenu": "Fechar menu de navegação",
+    "irParaConteudo": "Pular para o conteúdo",
+    "navegacaoLabel": "Navegação",
+    "idiomaLabel": "Escolher idioma",
+    "itens": [
+      {
+        "id": "inicio",
+        "label": "Início",
+        "arquivo": "inicio.app"
+      },
+      {
+        "id": "sobre",
+        "label": "Sobre mim",
+        "arquivo": "sobre-mim.txt"
+      },
+      {
+        "id": "virais",
+        "label": "Mais virais",
+        "arquivo": "virais.mp4"
+      },
+      {
+        "id": "formatos",
+        "label": "Formatos",
+        "arquivo": "formatos.psd"
+      },
+      {
+        "id": "cases",
+        "label": "Cases",
+        "arquivo": "cases.pdf"
+      },
+      {
+        "id": "entregaveis",
+        "label": "Entregáveis",
+        "arquivo": "entregaveis.zip"
+      },
+      {
+        "id": "contato",
+        "label": "Contato",
+        "arquivo": "contato.vcf"
+      }
+    ]
+  },
+  "secoes": {
+    "inicio": {
+      "janela": "rafaelacreator.com",
+      "nome": {
+        "primeira": "Rafaela",
+        "segunda": "Chagas"
+      },
+      "balao": "ugc creator",
+      "balaoAria": "Rafaela Chagas, UGC creator",
+      "capaAlt": "Rafaela Chagas, UGC creator",
+      "selo": {
+        "titulo": "Eu crio anúncios de",
+        "destaque": "+3 milhões por mês"
+      }
+    },
+    "sobre": {
+      "janela": "sobre-mim.mp4",
+      "fita": {
+        "palavra": "sobre mim",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "texto": "Sou a Rafa, criadora de conteúdo desde 2019 e fundadora da Seu Influencer, a maior plataforma de UGC do Brasil. Fui eu quem transformou UGC em profissão por aqui: já ensinei mais de 50 mil pessoas a criar vídeos para marcas. Meus vídeos já somaram dezenas de milhões de visualizações e geraram milhões em vendas em anúncios.",
+      "videoLegenda": "quem é a Rafa",
+      "botao": {
+        "label": "Ver meus virais",
+        "alvo": "#virais"
+      }
+    },
+    "virais": {
+      "janela": "mais-virais.mp4",
+      "fita": {
+        "palavra": "mais virais",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "videos": [
+        {
+          "views": "1 milhão de views"
+        },
+        {
+          "views": "12 milhões de views"
+        },
+        {
+          "views": "29 milhões de views"
+        },
+        {
+          "views": "8 milhões de views"
+        },
+        {
+          "views": "600 mil views"
+        }
+      ]
+    },
+    "marcas": {
+      "janela": "marcas.png",
+      "fita": {
+        "palavra": "projetos concluídos",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "nomes": {
+        "bioderma": "Bioderma",
+        "banila-co": "Banila Co",
+        "claro": "Claro",
+        "keune": "Keune",
+        "hollyland": "Hollyland",
+        "petrizi": "Petrizi",
+        "truss": "Truss",
+        "grand-palladium": "Grand Palladium",
+        "capcut": "CapCut",
+        "brahma": "Brahma",
+        "ulanzi": "Ulanzi",
+        "qcy": "QCY",
+        "real-techniques": "Real Techniques",
+        "nutribullet": "Nutribullet",
+        "loreal": "L'Oréal",
+        "disney-plus": "Disney+"
+      }
+    },
+    "formatos": {
+      "janela": "formatos.psd",
+      "fita": {
+        "palavra": "formatos",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "tech": {
+        "fita": {
+          "palavra": "tech",
+          "corPalavra": "lima",
+          "corFita": "rosa"
+        }
+      },
+      "viagens": {
+        "fita": {
+          "palavra": "viagens",
+          "corPalavra": "lilas",
+          "corFita": "lima"
+        },
+        "anterior": "Ver vídeo anterior",
+        "proximo": "Ver próximo vídeo"
+      },
+      "subformatos": {
+        "personagem": "personagem",
+        "vlog": "vlog",
+        "contraste": "contraste",
+        "tiktok-shop": "tiktok shop",
+        "falando-com-a-camera": "falando com a câmera",
+        "dupla-criativa": "dupla criativa",
+        "anuncios": "anúncios"
+      }
+    },
+    "cases": {
+      "janela": "cases.pdf",
+      "fita": {
+        "palavra": "cases",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "painelRotulo": "gerenciador de anúncios",
+      "patrocinado": "Patrocinado",
+      "verCase": "ver case",
+      "rotulos": {
+        "gasto": "gasto",
+        "receita": "receita",
+        "roas": "ROAS",
+        "vendas": "vendas",
+        "views": "views",
+        "instalacoes": "instalações"
+      },
+      "lista": [
+        {
+          "marca": "",
+          "resultado": "+1 milhão em vendas com apenas UM anúncio + ROAS 3.0x",
+          "moldura": "dashboard",
+          "balao": {
+            "cor": "lilas",
+            "corTexto": "lima"
+          },
+          "metricas": {
+            "gasto": "R$ 340,00",
+            "receita": "R$ 1.020,00",
+            "roas": "3,00x",
+            "vendas": "3.599",
+            "views": "",
+            "instalacoes": ""
+          },
+          "link": ""
+        },
+        {
+          "marca": "",
+          "resultado": "+700 mil reais em vendas e ROAS 4.10x com um criativo",
+          "moldura": "dashboard",
+          "balao": {
+            "cor": "rosa",
+            "corTexto": "branco"
+          },
+          "metricas": {
+            "gasto": "R$ 177,5 mil",
+            "receita": "R$ 727,7 mil",
+            "roas": "4,10x",
+            "vendas": "2.413",
+            "views": "",
+            "instalacoes": ""
+          },
+          "link": ""
+        },
+        {
+          "marca": "",
+          "resultado": "+29 milhões de views e +100 mil novas instalações do app",
+          "moldura": "dashboard",
+          "balao": {
+            "cor": "offwhite",
+            "corTexto": "rosa"
+          },
+          "metricas": {
+            "gasto": "",
+            "receita": "",
+            "roas": "",
+            "vendas": "",
+            "views": "29M",
+            "instalacoes": "100 mil"
+          },
+          "link": ""
+        },
+        {
+          "marca": "Captions",
+          "resultado": "Anúncio ativo há 3 anos pela marca, sem saturar. O que mais converteu até hoje.",
+          "moldura": "anuncio",
+          "balao": {
+            "cor": "lima",
+            "corTexto": "rosa"
+          },
+          "metricas": {
+            "gasto": "",
+            "receita": "",
+            "roas": "",
+            "vendas": "",
+            "views": "",
+            "instalacoes": ""
+          },
+          "link": ""
+        }
+      ],
+      "emojis": [
+        "✍️",
+        "🎧",
+        "💰",
+        "🧠"
+      ]
+    },
+    "entregaveis": {
+      "janela": "entregaveis.zip",
+      "fita": {
+        "palavra": "entregáveis",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "abrir": "abrir",
+      "fechar": "fechar",
+      "cards": [
+        {
+          "arquivo": "ugc-videos.app",
+          "titulo": "UGC VIDEOS",
+          "cor": "lilas",
+          "itens": [
+            "Vídeos UGC para uso em ads",
+            "Criação de novas contas e postagens diárias"
+          ],
+          "redes": [],
+          "botao": {
+            "label": "",
+            "mensagem": ""
+          }
+        },
+        {
+          "arquivo": "creator.app",
+          "titulo": "CREATOR",
+          "cor": "lima",
+          "itens": [
+            "Collab"
+          ],
+          "redes": [
+            {
+              "chave": "instagram",
+              "nome": "Instagram"
+            },
+            {
+              "chave": "youtube",
+              "nome": "YouTube"
+            },
+            {
+              "chave": "tiktok",
+              "nome": "TikTok"
+            }
+          ],
+          "botao": {
+            "label": "",
+            "mensagem": ""
+          }
+        },
+        {
+          "arquivo": "seu-influencer.app",
+          "titulo": "SEU INFLUENCER",
+          "cor": "rosa",
+          "itens": [
+            "Conecto sua marca com creators na maior plataforma de creators do Brasil"
+          ],
+          "redes": [],
+          "botao": {
+            "label": "Falar com a Seu Influencer",
+            "mensagem": "Oi! Vi o portfólio da Rafa e quero conectar minha marca com creators."
+          }
+        }
+      ]
+    },
+    "saber": {
+      "janela": "saber.txt",
+      "fita": {
+        "palavra": "você precisa saber",
+        "corPalavra": "lilas",
+        "corFita": "lima"
+      },
+      "itens": [
+        {
+          "texto": "Eu quem crio {numero} dos anúncios do produto mais viral da internet.",
+          "numero": {
+            "ate": 100,
+            "sufixo": "%"
+          }
+        },
+        {
+          "texto": "São +{numero} faturados por mês vendendo no Meta Ads.",
+          "numero": {
+            "ate": 3,
+            "sufixo": " milhões"
+          }
+        }
+      ]
+    },
+    "contato": {
+      "janela": "contato.vcf",
+      "fita": {
+        "palavra": "vamos trabalhar juntas?",
+        "corPalavra": "lima",
+        "corFita": "rosa"
+      },
+      "direto": {
+        "titulo": "Fala comigo direto",
+        "emailLabel": "E-mail",
+        "whatsappLabel": "WhatsApp",
+        "assuntoEmail": "Orçamento — vi seu portfólio",
+        "whatsappChamada": "Chamar no WhatsApp",
+        "emailChamada": "Mandar um e-mail",
+        "orcamentoLabel": "Orçamento",
+        "orcamentoChamada": "Pedir um orçamento"
+      },
+      "orcamento": {
+        "janela": "orcamento.app",
+        "chamada": "Quer um orçamento? Deixa seu e-mail que a gente entra em contato."
+      }
+    }
+  },
+  "formulario": {
+    "email": {
+      "label": "Seu e-mail",
+      "placeholder": "voce@suamarca.com"
+    },
+    "enviar": "Quero um orçamento",
+    "enviando": "Enviando...",
+    "sucesso": "Recebido! Em breve a gente te chama.",
+    "erroEnvio": "Não consegui enviar agora. Tenta de novo em instantes.",
+    "erroEmail": "Esse e-mail parece incompleto. Confere pra mim?",
+    "erroIntervalo": "Calma ✨ espera alguns segundos antes de enviar de novo.",
+    "erroConfig": "O formulário ainda não foi configurado.",
+    "lgpd": "Usamos seu e-mail só para enviar o orçamento. Nada de spam."
+  },
+  "video": {
+    "abrirLabel": "Abrir vídeo em tela cheia",
+    "fecharLabel": "Fechar vídeo",
+    "tocandoMudo": "Tocando sem som — clique para abrir com áudio",
+    "semSuporte": "Seu navegador não consegue reproduzir este vídeo."
+  },
+  "rodape": {
+    "direitos": "© 2026 Rafaela Chagas",
+    "redesLabel": "Redes sociais",
+    "voltarAoTopo": "Voltar ao topo",
+    "redes": [
+      {
+        "chave": "instagram",
+        "nome": "Instagram"
+      },
+      {
+        "chave": "youtube",
+        "nome": "YouTube"
+      },
+      {
+        "chave": "tiktok",
+        "nome": "TikTok"
+      }
+    ]
+  },
+  "emConstrucao": "esta seção está sendo montada",
+  "popup": {
+    "titulo": "Vamos trabalhar juntas?",
+    "chamada": "Quer um orçamento? Me diz por onde prefere falar que eu te respondo.",
+    "escolha": "Como prefere falar comigo?",
+    "opcaoEmail": "Por e-mail",
+    "opcaoWhatsapp": "Por WhatsApp",
+    "whatsappChamada": "Me chama agora e a gente resolve por lá.",
+    "whatsappBotao": "Abrir o WhatsApp",
+    "fechar": "Fechar",
+    "abrirDeNovo": "Pedir orçamento"
+  }
+}

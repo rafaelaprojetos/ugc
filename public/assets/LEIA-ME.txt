@@ -1,0 +1,27 @@
+COMO COLOCAR UM ARQUIVO AQUI
+
+1. Descubra o nome do slot:  npm run midias
+   (ou abra http://localhost:5173/slots com o site rodando)
+
+2. Salve o arquivo com EXATAMENTE o nome do slot, na pasta que o comando indicar.
+   Exemplo: o slot "tech-video-3" vai em  videos/tech/tech-video-3.mp4
+
+3. Rode:  npm run midias -- --processar
+   Ele comprime o vídeo, gera o poster e converte foto para WebP.
+
+Pronto. O site troca o placeholder pelo arquivo sozinho, sem mexer em código.
+
+EXTENSÕES ACEITAS
+  vídeos   .mp4  .mov
+  fotos    .webp .jpg .jpeg .png
+  logos    .svg  .png  .webp
+  stickers .webp .png  .svg
+
+PASTAS
+  videos/<grupo>/   um arquivo por slot de vídeo
+  fotos/capa/       fotos da capa
+  logos/            logos das marcas (círculo)
+  stickers/         stickers 3D decorativos
+  posters/          thumbnails dos vídeos — GERADAS automaticamente, não mexa
+  og/               capa.webp (1200x630) do link compartilhado
+  _originais/       cópia dos arquivos antes de comprimir — pode apagar quando quiser

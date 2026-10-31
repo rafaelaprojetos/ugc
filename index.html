@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!--
+      CSP pela meta tag: o GitHub Pages não deixa configurar headers HTTP.
+      Cobre quase tudo. O que NÃO dá para fazer por meta: frame-ancestors
+      (anti-iframe), HSTS, X-Frame-Options e X-Content-Type-Options.
+      Em hospedagem com headers (Vercel), o vercel.json cobre esses também.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://api.web3forms.com; script-src 'self' https://hcaptcha.com https://*.hcaptcha.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://api.web3forms.com https://hcaptcha.com https://*.hcaptcha.com; frame-src https://hcaptcha.com https://*.hcaptcha.com; manifest-src 'self'; upgrade-insecure-requests"
+    />
+
+    <!-- Ícone da aba ✨ -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icones/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icones/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icones/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E89AD2" />
+    <meta name="apple-mobile-web-app-title" content="Rafaela Chagas" />
+
+    <!-- SEO (atualizado por idioma em src/lib/seo.ts) -->
+    <title>Rafaela Chagas | UGC Creator</title>
+    <meta name="description" content="Portfólio de Rafaela Chagas, UGC creator. Vídeos verticais que vendem: formatos virais, cases de marcas e entregáveis para campanhas." />
+    <meta name="author" content="Rafaela Chagas" />
+    <link rel="canonical" href="https://rafaelacreator.com/pt" />
+    <link rel="alternate" hreflang="pt-BR" href="https://rafaelacreator.com/pt" />
+    <link rel="alternate" hreflang="en" href="https://rafaelacreator.com/en" />
+    <link rel="alternate" hreflang="x-default" href="https://rafaelacreator.com/pt" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rafaela Chagas" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="Rafaela Chagas | UGC Creator" />
+    <meta property="og:description" content="Portfólio de Rafaela Chagas, UGC creator. Vídeos verticais que vendem: formatos virais, cases de marcas e entregáveis para campanhas." />
+    <meta property="og:image" content="https://rafaelacreator.com/assets/og/capa.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Rafaela Chagas, UGC creator" />
+    <meta property="og:url" content="https://rafaelacreator.com/pt" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rafaela Chagas | UGC Creator" />
+    <meta name="twitter:description" content="Portfólio de Rafaela Chagas, UGC creator. Vídeos verticais que vendem." />
+    <meta name="twitter:image" content="https://rafaelacreator.com/assets/og/capa.webp" />
+
+    <!-- Fontes hospedadas no próprio site (declaradas em src/index.css) -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fontes/bricolage-grotesque-800-latin.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fontes/inter-variavel-latin.woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
