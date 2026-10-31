@@ -91,15 +91,16 @@ export function Formatos() {
   return (
     <Secao id="formatos">
       <div className="flex flex-col gap-10 md:gap-14">
-        {/* tech sobe por cima do título "formatos" e encosta nele */}
-        <div className="relative z-10 -mt-16 md:-mt-24 lg:-mt-28">
+        {/* tech encosta no canto do título "formatos" — no celular fica à direita,
+            senão cobre a palavra inteira */}
+        <div className="relative z-10 -mt-12 md:-mt-24 lg:-mt-28">
           <FitaTitulo
             palavra={s.tech.fita.palavra}
             corPalavra={s.tech.fita.corPalavra as CorFita}
             corFita={s.tech.fita.corFita as CorFita}
             nivel="h3"
             tamanho="gigante"
-            className="ml-[26%] mb-6 origin-bottom-left transition-transform duration-300 hover:-rotate-3 hover:scale-110 md:ml-[32%] md:mb-8"
+            className="ml-[50%] mb-6 origin-bottom-left transition-transform duration-300 hover:-rotate-3 hover:scale-110 md:ml-[32%] md:mb-8"
           />
           <GradeVideosQueSobem prefixo="tech" quantos={8} />
         </div>

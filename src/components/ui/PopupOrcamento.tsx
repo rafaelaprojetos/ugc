@@ -158,7 +158,9 @@ export function PopupOrcamento() {
         {aberto && (
           <m.div
             key="popup-orcamento"
-            className="fixed inset-0 z-90 flex items-stretch justify-center bg-tinta/75 p-0 md:items-center md:p-8"
+            // cartão centralizado, nunca a tela inteira: o site continua
+            // aparecendo atrás para a marca ver que tem mais portfólio
+            className="fixed inset-0 z-90 flex items-center justify-center bg-tinta/60 p-4 md:p-8"
             initial={menosMovimento ? { opacity: 1 } : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={menosMovimento ? { opacity: 1 } : { opacity: 0 }}
@@ -176,7 +178,7 @@ export function PopupOrcamento() {
               animate={{ scale: 1, y: 0 }}
               exit={menosMovimento ? { scale: 1 } : { scale: 0.96, y: 20 }}
               transition={{ duration: menosMovimento ? 0 : 0.26, ease: 'easeOut' }}
-              className="flex h-full w-full flex-col overflow-y-auto border-tinta bg-lilas shadow-janela md:h-auto md:max-h-[92vh] md:max-w-3xl md:rounded-janela md:border-[3px]"
+              className="flex max-h-[85dvh] w-full flex-col overflow-y-auto rounded-janela border-[3px] border-tinta bg-lilas shadow-janela md:max-h-[92vh] md:max-w-3xl"
             >
               <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b-2 border-tinta bg-bege px-4 py-2">
                 <span aria-hidden="true" className="flex shrink-0 gap-1.5">
@@ -194,7 +196,7 @@ export function PopupOrcamento() {
                 </button>
               </div>
 
-              <div className="flex flex-1 flex-col justify-center p-5 md:p-12">
+              <div className="flex flex-1 flex-col justify-center p-4 md:p-12">
                 <h2
                   id="titulo-popup-orcamento"
                   className="palavra-contorno mb-3 font-display text-grande text-lima"
