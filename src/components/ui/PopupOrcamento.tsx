@@ -148,7 +148,7 @@ export function PopupOrcamento() {
         <button
           type="button"
           onClick={() => setAberto(true)}
-          className="alvo-toque fixed right-4 bottom-4 z-60 flex items-center gap-2 rounded-pill border-[3px] border-tinta bg-lima px-5 py-3 font-display text-base lowercase text-tinta shadow-janela transition-transform duration-300 hover:-rotate-2 hover:scale-105 md:right-6 md:bottom-6 md:text-lg"
+          className="alvo-toque fixed right-4 bottom-4 z-40 flex items-center gap-2 rounded-pill border-[3px] border-tinta bg-lima px-5 py-3 font-display text-base lowercase text-tinta shadow-janela transition-transform duration-300 hover:-rotate-2 hover:scale-105 md:right-6 md:bottom-6 md:text-lg"
         >
           ✨ {c.popup.abrirDeNovo}
         </button>
@@ -158,7 +158,7 @@ export function PopupOrcamento() {
         {aberto && (
           <m.div
             key="popup-orcamento"
-            className="fixed inset-0 z-70 flex items-stretch justify-center bg-tinta/75 p-0 md:items-center md:p-8"
+            className="fixed inset-0 z-90 flex items-stretch justify-center bg-tinta/75 p-0 md:items-center md:p-8"
             initial={menosMovimento ? { opacity: 1 } : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={menosMovimento ? { opacity: 1 } : { opacity: 0 }}

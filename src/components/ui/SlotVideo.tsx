@@ -92,7 +92,12 @@ export function SlotVideo({ id, legenda, etiqueta, raio = 'video', className = '
     <>
       <button
         type="button"
-        onClick={() => setAberto(true)}
+        onClick={() => {
+          // para a prévia antes de abrir: dois vídeos grandes decodificando ao
+          // mesmo tempo engasgam o celular
+          aoSair()
+          setAberto(true)
+        }}
         onMouseEnter={aoEntrar}
         onMouseLeave={aoSair}
         onFocus={aoEntrar}
@@ -110,7 +115,10 @@ export function SlotVideo({ id, legenda, etiqueta, raio = 'video', className = '
           playsInline
           disablePictureInPicture
           tabIndex={-1}
-          className="h-full w-full object-cover"
+          // pointer-events-none: no iPhone o toque que cai no <video> faz o
+          // Safari tomar conta dele (play inline com os controles nativos) e o
+          // clique nunca chega no botão, então o modal não abria
+          className="pointer-events-none h-full w-full object-cover"
         >
           {c.video.semSuporte}
         </video>

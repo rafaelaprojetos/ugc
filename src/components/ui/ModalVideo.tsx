@@ -1,5 +1,6 @@
 import { AnimatePresence, m } from 'framer-motion'
 import { useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { usePrefereMenosMovimento } from '@/hooks/useMovimento'
 import { useIdioma } from '@/hooks/useIdioma'
 import { useTravaScroll } from '@/hooks/useTravaScroll'
@@ -48,7 +49,13 @@ export function ModalVideo({ aberto, fechar, src, poster, rotulo }: Props) {
     return () => document.removeEventListener('keydown', aoTeclar)
   }, [aberto, fechar])
 
-  return (
+  /*
+   * Vai para o body num portal, e não onde o vídeo está.
+   * No desktop os cards de #virais e #formatos giram (`transform: rotate`), e
+   * um ancestral com transform faz `position: fixed` passar a valer para ele
+   * em vez da tela — o modal virava uma caixinha dentro do card torto.
+   */
+  return createPortal(
     <AnimatePresence>
       {aberto && (
         <m.div
@@ -61,33 +68,51 @@ export function ModalVideo({ aberto, fechar, src, poster, rotulo }: Props) {
           animate={{ opacity: 1 }}
           exit={menosMovimento ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: menosMovimento ? 0 : 0.18 }}
-          className="fixed inset-0 z-60 flex items-center justify-center bg-tinta/85 p-4"
+          // h-dvh, não h-screen: no iPhone a barra do Safari entra na conta de
+          // 100vh, então o vídeo passava da tela e os controles ficavam fora.
+          // bg quase opaco para a barra do topo não aparecer por trás.
+          className="fixed inset-0 z-80 flex h-[100dvh] w-full flex-col bg-tinta/95"
           onClick={(e) => {
             if (e.target === e.currentTarget) fechar()
           }}
         >
-          <button
-            type="button"
-            onClick={fechar}
-            aria-label={c.video.fecharLabel}
-            className="alvo-toque absolute top-4 right-4 flex items-center justify-center rounded-pill border-2 border-tinta bg-lima px-4 font-semibold"
+          {/* faixa do botão fechar, respeitando o notch do iPhone */}
+          <div
+            className="flex shrink-0 justify-end px-4 pb-2"
+            style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 0.75rem)' }}
           >
-            ✕
-          </button>
+            <button
+              type="button"
+              onClick={fechar}
+              aria-label={c.video.fecharLabel}
+              className="alvo-toque flex items-center justify-center rounded-pill border-2 border-tinta bg-lima px-5 text-lg font-semibold text-tinta shadow-janela"
+            >
+              ✕
+            </button>
+          </div>
 
-          <video
-            src={src}
-            poster={poster}
-            controls
-            autoPlay
-            playsInline
-            preload="metadata"
-            className="max-h-[88vh] w-auto max-w-full rounded-video border-2 border-branco/20"
+          <div
+            className="flex min-h-0 flex-1 items-center justify-center px-3"
+            style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 0.75rem)' }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) fechar()
+            }}
           >
-            {c.video.semSuporte}
-          </video>
+            <video
+              src={src}
+              poster={poster}
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+              className="max-h-full w-auto max-w-full rounded-video border-2 border-branco/20"
+            >
+              {c.video.semSuporte}
+            </video>
+          </div>
         </m.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   )
 }
