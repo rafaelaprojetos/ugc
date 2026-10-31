@@ -80,7 +80,10 @@ evento pode ficar invisível para sempre se o evento não vier. Número animado 
 - A capa tem **uma foto só** (`capa-foto`), **16:9 em todas as larguras, inclusive celular**,
   com o nome por cima no canto de baixo à esquerda. O véu escuro degradê na metade de baixo
   é o que mantém o nome legível com qualquer imagem que entre no slot.
-- O formulário de orçamento mora no `<PopupOrcamento>`, em tela cheia. Abre sozinho em dois
+- O formulário de orçamento mora no `<PopupOrcamento>`, num **cartão centralizado** —
+  no máximo `85dvh` de altura, nunca a tela inteira nem no celular: o site precisa
+  continuar aparecendo atrás, senão a marca acha que o portfólio acabou ali.
+  Abre sozinho em dois
   gatilhos, **o que vier primeiro**: #entregaveis entrando na tela, ou 3 minutos de página
   aberta (só conta com a aba à vista). Uma vez por sessão (`sessionStorage`, com try/catch).
   Depois de aparecer, fica um botão fixo no canto para reabrir.
