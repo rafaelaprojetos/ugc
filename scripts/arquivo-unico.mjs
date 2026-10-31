@@ -35,7 +35,37 @@ async function dataUri(arquivoRelativo) {
   return `data:${tipo};base64,${dados.toString('base64')}`
 }
 
+// 0. textos e links num bloco legível, para editar sem precisar do projeto
+const pt = JSON.parse(await readFile(path.join(raiz, 'src/content/pt.json'), 'utf8'))
+const en = JSON.parse(await readFile(path.join(raiz, 'src/content/en.json'), 'utf8'))
+const { links } = await import('../src/content/media.ts')
+
+const blocoConteudo = `
+    <!-- ===================================================================
+         TEXTOS E LINKS DO SITE — você pode editar aqui.
+
+         Abra este arquivo num editor de texto (TextEdit, VS Code, Bloco de
+         Notas), troque o que está DEPOIS dos dois pontos, entre aspas, e salve.
+         Depois é só subir o arquivo de novo no GitHub.
+
+         Regras para não quebrar:
+           · mantenha as aspas "assim"
+           · mantenha as vírgulas no fim de cada linha
+           · não apague chaves { } nem colchetes [ ]
+           · acentos podem, emoji também
+
+         Se errar alguma coisa, o site volta sozinho para os textos originais.
+         ==================================================================== -->
+    <script id="rc-conteudo" type="application/json">
+${JSON.stringify({ pt, en, links }, null, 2)
+  .split('\n')
+  .map((linha) => '      ' + linha)
+  .join('\n')}
+    </script>
+`
+
 let html = await readFile(path.join(dist, 'index.html'), 'utf8')
+html = html.replace('</head>', () => `${blocoConteudo}  </head>`)
 const arquivos = await readdir(path.join(dist, 'assets'))
 
 // 1. CSS para dentro, com fontes e cursor virando data URI

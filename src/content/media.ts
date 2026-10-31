@@ -229,6 +229,8 @@ export const marcasDosVideos: Record<string, string> = {
 // Links e domínio
 // ---------------------------------------------------------------------------
 
+import { embutido } from './embutido.ts'
+
 export type Links = {
   email: string
   instagram: string
@@ -241,8 +243,7 @@ export type Links = {
   midiaKit: string
 }
 
-/** Links de contato e redes — trocar aqui vale para os dois idiomas */
-export const links: Links = {
+const linksPadrao: Links = {
   email: 'rafaelachagas@seuinfluencer.com.br',
   instagram: 'https://instagram.com/rafaelachagas',
   youtube: 'https://youtube.com/@canalrafaelachagas',
@@ -252,6 +253,9 @@ export const links: Links = {
   whatsappSocio: '',
   midiaKit: '',
 }
+
+/** Links de contato e redes — trocar aqui vale para os dois idiomas. */
+export const links: Links = { ...linksPadrao, ...(embutido.links ?? {}) }
 
 /** Domínio oficial e caminho canônico de cada idioma. */
 export const site = {

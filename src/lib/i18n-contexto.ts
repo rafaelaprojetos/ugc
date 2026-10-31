@@ -1,9 +1,13 @@
 import { createContext } from 'react'
+import { embutido } from '@/content/embutido'
 import en from '@/content/en.json'
 import pt from '@/content/pt.json'
 import type { Conteudo, Idioma } from '@/content/types'
 
-export const dicionarios: Record<Idioma, Conteudo> = { pt, en }
+export const dicionarios: Record<Idioma, Conteudo> = {
+  pt: (embutido.pt as Conteudo) ?? pt,
+  en: (embutido.en as Conteudo) ?? en,
+}
 export const CHAVE_STORAGE = 'rc:idioma'
 
 export type ContextoI18n = {
