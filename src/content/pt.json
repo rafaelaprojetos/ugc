@@ -60,8 +60,6 @@
         "primeira": "Rafaela",
         "segunda": "Chagas"
       },
-      "balao": "ugc creator",
-      "balaoAria": "Rafaela Chagas, UGC creator",
       "capaAlt": "Rafaela Chagas, UGC creator",
       "selo": {
         "titulo": "Eu crio anúncios de",
@@ -94,16 +92,16 @@
           "views": "1 milhão de views"
         },
         {
+          "views": "600 mil views"
+        },
+        {
           "views": "12 milhões de views"
         },
         {
+          "views": "1 milhão de views"
+        },
+        {
           "views": "29 milhões de views"
-        },
-        {
-          "views": "8 milhões de views"
-        },
-        {
-          "views": "600 mil views"
         }
       ]
     },
@@ -366,7 +364,8 @@
         "whatsappChamada": "Chamar no WhatsApp",
         "emailChamada": "Mandar um e-mail",
         "orcamentoLabel": "Orçamento",
-        "orcamentoChamada": "Pedir um orçamento"
+        "orcamentoChamada": "Pedir um orçamento",
+        "whatsappMensagem": "Oi, Rafaela! Vi seu portfólio e quero falar sobre um orçamento."
       },
       "orcamento": {
         "janela": "orcamento.app",
@@ -423,6 +422,7 @@
     "whatsappChamada": "Me chama agora e a gente resolve por lá.",
     "whatsappBotao": "Abrir o WhatsApp",
     "fechar": "Fechar",
-    "abrirDeNovo": "Pedir orçamento"
+    "abrirDeNovo": "Pedir orçamento",
+    "whatsappMensagem": "Oi, Rafaela! Vi seu portfólio e quero falar sobre um orçamento."
   }
 }

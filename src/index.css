@@ -250,6 +250,23 @@
   }
 }
 
+/* Selo da capa: balanço curto, só para o olho bater nele.
+   Fica numa camada só dele — a animação de entrada mexe no elemento de fora,
+   senão uma sobrescreveria a outra. Desligado em reduced-motion pelo @layer base. */
+@utility balanca {
+  animation: balancar 4.5s ease-in-out infinite;
+}
+
+@keyframes balancar {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0) rotate(1.5deg);
+  }
+}
+
 /* Esconde visualmente, mantém para leitores de tela */
 @utility apenas-leitor {
   position: absolute;

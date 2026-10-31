@@ -64,6 +64,42 @@ static void ApagarFundoClaro(uint8_t *buf, size_t w, size_t h) {
   }
 }
 
+/**
+ * Logo de letra CLARA sobre fundo colorido (Canva, Skelt, Captions, AMO).
+ * Não dá para olhar só o brilho: o azul-piscina do Canva é tão claro quanto a
+ * letra. O que separa é o canal mais escuro — branco tem os três canais altos,
+ * cor viva sempre tem um baixo. Depois repinta na cor da tinta, senão a letra
+ * branca sumiria no círculo rosa.
+ */
+static void ManterClaroComoTinta(uint8_t *buf, size_t w, size_t h) {
+  const int piso = 150, teto = 245;
+  for (size_t i = 0; i < w * h; i++) {
+    uint8_t *p = buf + i * 4;
+    int menor = MIN(p[0], MIN(p[1], p[2]));
+    int a = (menor - piso) * 255 / (teto - piso);
+    a = a < 0 ? 0 : (a > 255 ? 255 : a);
+    if (p[3] < a) a = p[3];  // respeita transparência que já existia
+    p[0] = 17; p[1] = 17; p[2] = 17; p[3] = (uint8_t)a;
+  }
+}
+
+/**
+ * Logo colorido sobre fundo escuro (Netflix). Tira o quase-preto e mantém a
+ * cor da marca como ela é.
+ */
+static void ApagarFundoEscuro(uint8_t *buf, size_t w, size_t h) {
+  const int piso = 45, teto = 110;
+  for (size_t i = 0; i < w * h; i++) {
+    uint8_t *p = buf + i * 4;
+    if (p[3] == 0) continue;
+    int maior = MAX(p[0], MAX(p[1], p[2]));
+    int a = (maior - piso) * 255 / (teto - piso);
+    a = a < 0 ? 0 : (a > 255 ? 255 : a);
+    if (p[3] < a) a = p[3];
+    p[3] = (uint8_t)a;
+  }
+}
+
 /** Retângulo que sobra depois de tirar a borda transparente. */
 static CGRect AreaUtil(uint8_t *buf, size_t w, size_t h) {
   size_t x0 = w, y0 = h, x1 = 0, y1 = 0;
@@ -114,8 +150,11 @@ int main(int argc, const char *argv[]) {
     CGRect recorte;
     size_t ladoW, ladoH;
 
-    if ([modo isEqualToString:@"logo"]) {
-      ApagarFundoClaro(buf, w, h);
+    if ([modo isEqualToString:@"logo"] || [modo isEqualToString:@"logo-claro"] ||
+        [modo isEqualToString:@"logo-escuro"]) {
+      if ([modo isEqualToString:@"logo"]) ApagarFundoClaro(buf, w, h);
+      else if ([modo isEqualToString:@"logo-claro"]) ManterClaroComoTinta(buf, w, h);
+      else ApagarFundoEscuro(buf, w, h);
       recorte = AreaUtil(buf, w, h);
       ladoW = argc > 4 ? atoi(argv[4]) : 400;
       ladoH = 0;  // mantém proporção

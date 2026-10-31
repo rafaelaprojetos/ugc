@@ -1,5 +1,4 @@
 import { m } from 'framer-motion'
-import { BalaoFala } from '@/components/ui/BalaoFala'
 import { JanelaMac } from '@/components/ui/JanelaMac'
 import { SlotFoto } from '@/components/ui/SlotFoto'
 import { useIdioma } from '@/hooks/useIdioma'
@@ -9,18 +8,18 @@ import { conjuntoSolto, pecaSolta } from '@/lib/animacoes'
 /** Selo flutuante da capa: círculo com visto + duas linhas. */
 function Selo({ titulo, destaque }: { titulo: string; destaque: string }) {
   return (
-    <span className="flex items-center gap-2.5 rounded-[18px] border-2 border-tinta bg-branco px-3 py-2 shadow-janela md:gap-3 md:px-4 md:py-2.5">
+    <span className="flex items-center gap-1.5 rounded-[14px] border-2 border-tinta bg-branco px-2 py-1.5 shadow-janela md:gap-2 md:px-3 md:py-2">
       <span
         aria-hidden="true"
-        className="flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-tinta bg-lima md:size-9"
+        className="flex size-5 shrink-0 items-center justify-center rounded-full border-2 border-tinta bg-lima md:size-6"
       >
-        <svg viewBox="0 0 24 24" className="size-4 md:size-5" fill="none" stroke="var(--color-tinta)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" className="size-3 md:size-3.5" fill="none" stroke="var(--color-tinta)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="m5 13 4.5 4.5L19 7" />
         </svg>
       </span>
       <span className="block text-left leading-tight">
-        <span className="block text-[11px] text-tinta/70 md:text-xs">{titulo}</span>
-        <span className="block text-sm font-semibold text-tinta md:text-base">{destaque}</span>
+        <span className="block text-[8px] text-tinta/70 md:text-[10px]">{titulo}</span>
+        <span className="block text-[10px] font-semibold text-tinta md:text-xs">{destaque}</span>
       </span>
     </span>
   )
@@ -60,16 +59,16 @@ export function Inicio() {
             />
 
             <m.div {...animacao} className="absolute inset-0 p-3 md:p-7 lg:p-10">
-              {/* selo flutuante, canto de cima à direita */}
+              {/* selo flutuante, canto de cima à direita.
+                  A animação de entrada fica aqui fora e o balanço no span de dentro:
+                  na mesma camada uma apagaria a outra. */}
               <m.div {...peca} className="absolute top-3 right-3 md:top-7 md:right-7 lg:top-10 lg:right-10">
-                <Selo titulo={s.selo.titulo} destaque={s.selo.destaque} />
+                <span className={`block ${menosMovimento ? '' : 'balanca'}`}>
+                  <Selo titulo={s.selo.titulo} destaque={s.selo.destaque} />
+                </span>
               </m.div>
 
               <div className="flex h-full flex-col items-start justify-end">
-                <m.div {...peca} className="mb-1.5 md:mb-3">
-                  <BalaoFala rabo="esquerda">{s.balao}</BalaoFala>
-                </m.div>
-
                 <m.h1 {...peca} id="titulo-inicio" className="relative isolate">
                   <span className="sr-only">
                     {s.nome.primeira} {s.nome.segunda}

@@ -68,7 +68,7 @@ export function Contato() {
               {links.whatsapp && (
                 <li>
                   <LinkProtegido
-                    montarHref={() => linkWhatsapp()}
+                    montarHref={() => linkWhatsapp(s.direto.whatsappMensagem)}
                     externo
                     className={`${cartao} bg-lima`}
                   >

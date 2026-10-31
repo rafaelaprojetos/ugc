@@ -9,25 +9,23 @@ import { usePrefereMenosMovimento } from '@/hooks/useMovimento'
 
 /**
  * Um tamanho e uma altura para cada bolinha — nenhuma repete a vizinha.
- * Larguras entre 16 (64px) e 32 (128px): é o que tira a cara de grade.
+ * Vale em todas as larguras, não só no desktop: em grade todas saíam iguais
+ * e a última ficava sozinha numa linha. Em flex solto a última linha centraliza.
  */
 const variacoes = [
-  'lg:w-28 lg:translate-y-0',
-  'lg:w-20 lg:translate-y-6',
-  'lg:w-32 lg:-translate-y-4',
-  'lg:w-16 lg:translate-y-3',
-  'lg:w-24 lg:-translate-y-7',
-  'lg:w-32 lg:translate-y-4',
-  'lg:w-20 lg:-translate-y-2',
-  'lg:w-28 lg:translate-y-8',
-  'lg:w-16 lg:-translate-y-5',
-  'lg:w-24 lg:translate-y-1',
-  'lg:w-32 lg:-translate-y-6',
-  'lg:w-20 lg:translate-y-5',
-  'lg:w-28 lg:-translate-y-3',
-  'lg:w-16 lg:translate-y-7',
-  'lg:w-24 lg:-translate-y-8',
-  'lg:w-32 lg:translate-y-2',
+  'w-20 translate-y-0 md:w-24 lg:w-28 lg:translate-y-0',
+  'w-14 translate-y-1 md:w-16 lg:w-20 lg:translate-y-6',
+  'w-24 -translate-y-1 md:w-30 lg:w-32 lg:-translate-y-4',
+  'w-16 translate-y-2 md:w-20 lg:w-24 lg:translate-y-3',
+  'w-22 -translate-y-2 md:w-26 lg:w-28 lg:-translate-y-7',
+  'w-18 translate-y-1 md:w-22 lg:w-24 lg:translate-y-4',
+  'w-26 -translate-y-1 md:w-32 lg:w-36 lg:-translate-y-2',
+  'w-16 translate-y-2 md:w-18 lg:w-20 lg:translate-y-8',
+  'w-20 -translate-y-2 md:w-24 lg:w-28 lg:-translate-y-5',
+  'w-14 translate-y-1 md:w-18 lg:w-22 lg:translate-y-1',
+  'w-24 -translate-y-1 md:w-28 lg:w-32 lg:-translate-y-6',
+  'w-18 translate-y-2 md:w-20 lg:w-24 lg:translate-y-5',
+  'w-22 -translate-y-2 md:w-26 lg:w-30 lg:-translate-y-3',
 ] as const
 
 /** Respiração de cada bolinha: ciclo entre 3s e 4s, com atrasos diferentes. */
@@ -47,7 +45,7 @@ export function Marcas() {
 
   return (
     <Secao id="marcas" tamanho="grande">
-      <ul className="grid grid-cols-4 gap-3 md:grid-cols-6 md:gap-5 lg:flex lg:flex-wrap lg:items-center lg:justify-center lg:gap-7">
+      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4 md:gap-x-5 md:gap-y-6 lg:gap-7">
         {marcas.map((marca, i) => {
           const id = `logo-${marca}`
           const destacada = emFoco === id
@@ -58,7 +56,7 @@ export function Marcas() {
           return (
             <li
               key={id}
-              className={`w-full ${variacoes[i % variacoes.length]}`}
+              className={`shrink-0 ${variacoes[i % variacoes.length]}`}
               onPointerEnter={podeHover ? () => setEmFoco(id) : undefined}
               onPointerLeave={podeHover ? () => setEmFoco(null) : undefined}
             >

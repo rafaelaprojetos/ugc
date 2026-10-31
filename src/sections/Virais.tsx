@@ -25,7 +25,8 @@ export function Virais() {
         <ul className="carrossel -mx-[var(--gutter)] gap-4 px-[var(--gutter)] pt-6 pb-4 md:mx-0 md:grid md:snap-none md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 lg:flex lg:items-start lg:justify-center lg:gap-0 lg:pt-6 lg:pb-16">
           {videos.map((video, i) => (
             <li
-              key={video.views}
+              // o slot, não o texto das views: duas etiquetas podem ter o mesmo número
+              key={`virais-video-${i + 1}`}
               className={`carrossel-item w-[70vw] max-w-[300px] transition-transform duration-300 md:w-auto md:max-w-none lg:hover:z-50 lg:hover:scale-110 ${arranjo[i].classe}`}
               style={{ ['--giro' as string]: `${arranjo[i].giro}deg` }}
             >

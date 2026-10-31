@@ -15,11 +15,19 @@ export function linkEmail(assunto?: string) {
 /**
  * O WhatsApp agora é um link inteiro em media.ts — pode ser wa.me, link curto
  * ou link de grupo. Montado em tempo de execução, nunca escrito no HTML.
+ *
+ * Com `mensagem`, a conversa já abre com o texto digitado. Só funciona em link
+ * do próprio WhatsApp (wa.me / api.whatsapp.com); link curto de terceiros
+ * ignoraria o `?text=`, então nesse caso o texto não é acrescentado.
  */
-export function linkWhatsapp() {
+export function linkWhatsapp(mensagem?: string) {
   const url = links.whatsapp.trim()
   if (!url) return null
-  return url.startsWith('http') ? url : `https://${url}`
+  const completo = url.startsWith('http') ? url : `https://${url}`
+  if (!mensagem) return completo
+  if (!/(^https?:\/\/)(wa\.me|api\.whatsapp\.com)\//i.test(completo)) return completo
+  const juncao = completo.includes('?') ? '&' : '?'
+  return `${completo}${juncao}text=${encodeURIComponent(mensagem)}`
 }
 
 /** Exibe o e-mail quebrado em pedaços, para não virar uma string colhível. */

@@ -109,17 +109,12 @@ export const marcas = [
 ] as const
 
 /**
- * Logos que já vêm com fundo próprio (quadrado colorido, letra clara).
- * Esses preenchem o círculo inteiro; se ficassem sobre o rosa, a letra branca
- * sumiria. Todos os outros entram recortados, sobre o círculo rosa.
+ * Logos que preenchem o círculo inteiro em vez de ficar recortados sobre o rosa.
+ * Hoje nenhum: todos foram recortados do fundo próprio por `npm run importar`
+ * (modos `logo-claro` e `logo-escuro` em scripts/tratar-imagem.m).
+ * Deixado aqui porque um logo novo pode chegar com fundo que não dê para tirar.
  */
-export const logosQuePreenchem: readonly string[] = [
-  'amo',
-  'canva',
-  'captions',
-  'netflix',
-  'skelt',
-]
+export const logosQuePreenchem: readonly string[] = []
 
 export const slots: Slot[] = [
   // Capa — uma foto só, horizontal
@@ -254,8 +249,8 @@ const linksPadrao: Links = {
   youtube: 'https://youtube.com/@canalrafaelachagas',
   tiktok: 'https://tiktok.com/@byrafaelachagas',
   whatsapp: 'https://wa.me/5537999689621',
-  // PREENCHER: só números, com DDI. ex: 5511999998888
-  whatsappSocio: '',
+  // só números, com DDI — a Seu Influencer, em #entregaveis
+  whatsappSocio: '5537998450640',
   midiaKit: '',
 }
 

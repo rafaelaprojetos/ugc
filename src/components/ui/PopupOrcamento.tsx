@@ -135,7 +135,7 @@ export function PopupOrcamento() {
     return () => document.removeEventListener('keydown', aoTeclar)
   }, [aberto])
 
-  const whats = linkWhatsapp()
+  const whats = linkWhatsapp(c.popup.whatsappMensagem)
   const aba = (ativa: boolean) =>
     `alvo-toque flex-1 rounded-pill border-[3px] border-tinta px-4 py-2.5 font-display text-base lowercase transition-colors md:text-lg ${
       ativa ? 'bg-lima text-tinta' : 'bg-branco/70 text-tinta/60 hover:bg-branco'

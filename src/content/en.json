@@ -60,8 +60,6 @@
         "primeira": "Rafaela",
         "segunda": "Chagas"
       },
-      "balao": "ugc creator",
-      "balaoAria": "Rafaela Chagas, UGC creator",
       "capaAlt": "Rafaela Chagas, UGC creator",
       "selo": {
         "titulo": "I create ads worth",
@@ -94,16 +92,16 @@
           "views": "1 million views"
         },
         {
+          "views": "600k views"
+        },
+        {
           "views": "12 million views"
         },
         {
+          "views": "1 million views"
+        },
+        {
           "views": "29 million views"
-        },
-        {
-          "views": "8 million views"
-        },
-        {
-          "views": "600k views"
         }
       ]
     },
@@ -366,7 +364,8 @@
         "whatsappChamada": "Message on WhatsApp",
         "emailChamada": "Send an email",
         "orcamentoLabel": "Quote",
-        "orcamentoChamada": "Request a quote"
+        "orcamentoChamada": "Request a quote",
+        "whatsappMensagem": "Hi Rafaela! I saw your portfolio and I’d like to talk about a quote."
       },
       "orcamento": {
         "janela": "quote.app",
@@ -423,6 +422,7 @@
     "whatsappChamada": "Message me now and we'll sort it out there.",
     "whatsappBotao": "Open WhatsApp",
     "fechar": "Close",
-    "abrirDeNovo": "Get a quote"
+    "abrirDeNovo": "Get a quote",
+    "whatsappMensagem": "Hi Rafaela! I saw your portfolio and I’d like to talk about a quote."
   }
 }
