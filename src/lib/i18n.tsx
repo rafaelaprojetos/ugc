@@ -10,6 +10,12 @@ import {
   type ContextoI18n,
 } from '@/lib/i18n-contexto'
 import { caminhoDoIdioma } from '@/lib/midias'
+
+/**
+ * Build de arquivo único (um index.html com tudo dentro): não existem as rotas
+ * /pt e /en, então o idioma não mexe na URL — só no conteúdo.
+ */
+const ARQUIVO_UNICO = import.meta.env.VITE_ARQUIVO_UNICO === '1'
 import { secaoNoTopo } from '@/lib/secoes'
 import { aplicarSeo } from '@/lib/seo'
 
@@ -27,6 +33,7 @@ export function ProvedorIdioma({ children }: { children: ReactNode }) {
     } catch {
       /* sem persistência, sem problema */
     }
+    if (ARQUIVO_UNICO) return
     const destino = caminhoDoIdioma(novo) + window.location.hash
     if (window.location.pathname + window.location.hash !== destino) {
       window.history.pushState(null, '', destino)
@@ -50,6 +57,7 @@ export function ProvedorIdioma({ children }: { children: ReactNode }) {
 
   // Chegou em "/" (ou caminho desconhecido): normaliza para /pt ou /en
   useEffect(() => {
+    if (ARQUIVO_UNICO) return
     if (idiomaDoCaminho(window.location.pathname)) return
     window.history.replaceState(null, '', caminhoDoIdioma(idioma) + window.location.hash)
   }, [idioma])

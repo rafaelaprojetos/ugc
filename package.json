@@ -12,7 +12,8 @@
     "icones": "node scripts/icones.mjs",
     "midias": "node scripts/midias.mjs",
     "fontes": "node scripts/fontes.mjs",
-    "paginas": "node scripts/paginas.mjs"
+    "paginas": "node scripts/paginas.mjs",
+    "arquivo-unico": "VITE_ARQUIVO_UNICO=1 BASE_PATH= vite build && node scripts/arquivo-unico.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

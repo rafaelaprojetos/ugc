@@ -16,6 +16,29 @@ A página seguinte mostra uns comandos. Ignore, use os daqui de baixo.
 
 ---
 
+## Atalho: um arquivo só, para ver o site no ar hoje
+
+```bash
+npm run arquivo-unico
+```
+
+Gera `portfolio-index.html` na pasta do projeto: 701 kB com **tudo dentro** —
+estilos, JavaScript, fontes e cursor viram texto no próprio arquivo. Zero
+dependência externa.
+
+No GitHub: **Add file → Upload files**, arraste ele, e **renomeie para
+`index.html`**. Em Settings → Pages, Source = **Deploy from a branch**, `main`,
+`/ (root)`.
+
+O que você perde nesse atalho:
+
+- os endereços `/pt` e `/en` não existem (o seletor de idioma funciona, mas sem
+  mudar a URL)
+- **vídeo e foto não cabem dentro de um arquivo.** Enquanto os slots estiverem
+  vazios tudo bem; quando as mídias entrarem, tem que ser a pasta inteira
+
+Serve para ver o site funcionando agora. Para valer, use o caminho de baixo.
+
 ## 2. Mandar o código
 
 **Não dá para subir só o `index.html`.** Ele sozinho não é o site — é o esqueleto
