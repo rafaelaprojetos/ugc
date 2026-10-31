@@ -18,21 +18,36 @@ A página seguinte mostra uns comandos. Ignore, use os daqui de baixo.
 
 ## 2. Mandar o código
 
-No terminal, dentro da pasta do projeto (`~/Documents/portfolio`):
+**Não dá para subir só o `index.html`.** Ele sozinho não é o site — é o esqueleto
+que chama todo o resto. Subindo só ele, a página fica branca. Tem que ir a pasta
+inteira.
+
+### Jeito mais fácil: GitHub Desktop
+
+1. Baixe em **desktop.github.com** e instale
+2. Abra e entre com sua conta do GitHub (abre no navegador, sem digitar token)
+3. **File → Add Local Repository** → escolha `Documentos/portfolio`
+4. Ele mostra os commits prontos. Clique em **Publish repository**
+   - desmarque **Keep this code private** (o Pages de graça precisa ser público)
+5. Daí em diante: mudou algo? O Desktop mostra. Escreve uma frase, **Commit**,
+   depois **Push origin**. O site se atualiza sozinho em dois minutos.
+
+Se o repositório `portfolio` já existe na sua conta e está com arquivos soltos,
+apague ele antes (Settings → lá embaixo → Delete this repository) e deixe o
+Desktop criar do zero.
+
+### Jeito do terminal
 
 ```bash
+cd ~/Documents/portfolio
 git remote add origin https://github.com/SEU-USUARIO/portfolio.git
 git push -u origin main
 ```
 
-Troque `SEU-USUARIO` pelo seu usuário do GitHub.
-
-Na primeira vez o Git vai pedir login. Vai abrir o navegador para você autorizar —
-é só entrar na sua conta e confirmar. Se pedir usuário e senha no terminal em vez
-disso, a "senha" não é a sua senha: é um token. Nesse caso:
-github.com → foto do perfil → Settings → Developer settings →
+O Git vai pedir usuário e senha. A "senha" não é a sua senha do GitHub: é um
+token. github.com → foto do perfil → Settings → Developer settings →
 Personal access tokens → Tokens (classic) → Generate new token →
-marque **repo** e **workflow** → copie e cole como senha.
+marque **repo** e **workflow** → copie e use como senha.
 
 ---
 
