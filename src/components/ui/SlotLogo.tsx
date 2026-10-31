@@ -1,5 +1,5 @@
 import { PlaceholderMidia } from '@/components/ui/PlaceholderMidia'
-import { slot as buscarSlot } from '@/content/media'
+import { slot as buscarSlot, logosQuePreenchem } from '@/content/media'
 import { arquivoDoSlot } from '@/lib/midias'
 
 type Props = {
@@ -26,16 +26,19 @@ export function SlotLogo({ id, alt, className = '' }: Props) {
       />
     )
 
+  // Logo com fundo próprio preenche o círculo; os recortados respiram no rosa.
+  const preenche = logosQuePreenchem.includes(id.replace('logo-', ''))
+
   return (
     <span
-      className={`flex aspect-square items-center justify-center overflow-hidden rounded-full border border-tinta/15 bg-branco p-[18%] shadow-janela ${className}`}
+      className={`flex aspect-square items-center justify-center overflow-hidden rounded-full border border-tinta/15 bg-rosa-claro shadow-janela ${preenche ? '' : 'p-[18%]'} ${className}`}
     >
       <img
         src={arquivo.src}
         alt={alt}
         loading="lazy"
         decoding="async"
-        className="max-h-full max-w-full object-contain"
+        className={preenche ? 'h-full w-full object-cover' : 'max-h-full max-w-full object-contain'}
       />
     </span>
   )

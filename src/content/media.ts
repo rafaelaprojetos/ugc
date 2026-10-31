@@ -77,12 +77,12 @@ function videos(grupo: string, prefixo: string, quantos: number): Slot[] {
  */
 export const subformatos = [
   { pasta: 'personagem', quantos: 4 },
-  { pasta: 'vlog', quantos: 4 },
+  { pasta: 'vlog', quantos: 5 },
   { pasta: 'contraste', quantos: 4 },
   { pasta: 'tiktok-shop', quantos: 4 },
   { pasta: 'falando-com-a-camera', quantos: 4 },
   { pasta: 'dupla-criativa', quantos: 4 },
-  { pasta: 'anuncios', quantos: 4 },
+  { pasta: 'anuncios', quantos: 10 },
 ] as const
 
 /**
@@ -91,28 +91,35 @@ export const subformatos = [
  */
 export const quantosCases = 4
 
-/** Stickers 3D decorativos. Hoje só o fone, que flutua em #virais. */
-export const stickers = ['fone'] as const
-
 /** Marcas dos logos. Troque pelo nome real da marca — vira "logo-<marca>". */
 export const marcas = [
+  'amo',
   'bioderma',
-  'banila-co',
-  'claro',
-  'keune',
-  'hollyland',
-  'petrizi',
-  'truss',
-  'grand-palladium',
+  'canva',
   'capcut',
-  'brahma',
-  'ulanzi',
-  'qcy',
-  'real-techniques',
-  'nutribullet',
+  'captions',
+  'etat-pur',
+  'keune',
   'loreal',
-  'disney-plus',
+  'netflix',
+  'ninja',
+  'revlon',
+  'skelt',
+  'ulanzi',
 ] as const
+
+/**
+ * Logos que já vêm com fundo próprio (quadrado colorido, letra clara).
+ * Esses preenchem o círculo inteiro; se ficassem sobre o rosa, a letra branca
+ * sumiria. Todos os outros entram recortados, sobre o círculo rosa.
+ */
+export const logosQuePreenchem: readonly string[] = [
+  'amo',
+  'canva',
+  'captions',
+  'netflix',
+  'skelt',
+]
 
 export const slots: Slot[] = [
   // Capa — uma foto só, horizontal
@@ -143,15 +150,6 @@ export const slots: Slot[] = [
     pasta: 'logos',
     formato: 'circulo',
     grupo: 'Logos',
-  })),
-
-  // Stickers decorativos
-  ...stickers.map<Slot>((nome) => ({
-    id: `sticker-${nome}`,
-    tipo: 'sticker',
-    pasta: 'stickers',
-    formato: '1:1',
-    grupo: 'Stickers',
   })),
 ]
 
@@ -195,6 +193,7 @@ export const marcasDosVideos: Record<string, string> = {
   'vlog-video-2': '',
   'vlog-video-3': '',
   'vlog-video-4': '',
+  'vlog-video-5': '',
   'contraste-video-1': '',
   'contraste-video-2': '',
   'contraste-video-3': '',
@@ -215,6 +214,12 @@ export const marcasDosVideos: Record<string, string> = {
   'anuncios-video-2': '',
   'anuncios-video-3': '',
   'anuncios-video-4': '',
+  'anuncios-video-5': '',
+  'anuncios-video-6': '',
+  'anuncios-video-7': '',
+  'anuncios-video-8': '',
+  'anuncios-video-9': '',
+  'anuncios-video-10': '',
   'viagens-video-1': '',
   'viagens-video-2': '',
   'viagens-video-3': '',

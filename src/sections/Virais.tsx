@@ -1,5 +1,4 @@
 import { Secao } from '@/components/ui/Secao'
-import { Sticker } from '@/components/ui/Sticker'
 import { SlotVideo } from '@/components/ui/SlotVideo'
 import { useIdioma } from '@/hooks/useIdioma'
 
@@ -23,14 +22,6 @@ export function Virais() {
   return (
     <Secao id="virais">
       <div className="relative">
-        {/* Sticker de fone, perto do segundo vídeo */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-4 left-[30%] z-40 hidden w-14 md:block lg:left-[27%] lg:w-20"
-        >
-          <Sticker id="sticker-fone" giro={-12} />
-        </span>
-
         <ul className="carrossel -mx-[var(--gutter)] gap-4 px-[var(--gutter)] pt-6 pb-4 md:mx-0 md:grid md:snap-none md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 lg:flex lg:items-start lg:justify-center lg:gap-0 lg:pt-6 lg:pb-16">
           {videos.map((video, i) => (
             <li

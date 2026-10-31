@@ -115,22 +115,19 @@
         "corFita": "rosa"
       },
       "nomes": {
+        "amo": "AMO",
         "bioderma": "Bioderma",
-        "banila-co": "Banila Co",
-        "claro": "Claro",
-        "keune": "Keune",
-        "hollyland": "Hollyland",
-        "petrizi": "Petrizi",
-        "truss": "Truss",
-        "grand-palladium": "Grand Palladium",
+        "canva": "Canva",
         "capcut": "CapCut",
-        "brahma": "Brahma",
-        "ulanzi": "Ulanzi",
-        "qcy": "QCY",
-        "real-techniques": "Real Techniques",
-        "nutribullet": "Nutribullet",
-        "loreal": "L'Oréal",
-        "disney-plus": "Disney+"
+        "captions": "Captions",
+        "etat-pur": "État Pur",
+        "keune": "Keune",
+        "loreal": "L’Oréal",
+        "netflix": "Netflix",
+        "ninja": "Ninja",
+        "revlon": "Revlon",
+        "skelt": "Skelt",
+        "ulanzi": "Ulanzi"
       }
     },
     "formatos": {
