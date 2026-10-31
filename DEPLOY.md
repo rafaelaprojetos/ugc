@@ -1,138 +1,149 @@
-# Publicar o site
+# Publicar o site no GitHub Pages
 
-Passo a passo completo, do zero até rafaelacreator.com no ar com HTTPS.
-
----
-
-## 1. Antes de tudo: preencher o que falta
-
-| O quê | Onde | Status |
-| --- | --- | --- |
-| Chave do Web3Forms | `.env` → `VITE_WEB3FORMS_KEY` | **falta** |
-| WhatsApp do sócio | `src/content/media.ts` → `links.whatsappSocio` | **falta** |
-| Capa do link compartilhado | `public/assets/og/capa.webp` (1200x630) | **falta** |
-| Mídias (78 slots) | `npm run midias` mostra cada uma | **falta** |
-
-O site publica sem isso — só vai aparecer moldura listrada no lugar das mídias e
-o formulário vai avisar que não está configurado. Dá para publicar e ir preenchendo.
-
-### Criar a chave do Web3Forms
-
-1. Abra **web3forms.com**
-2. Em "Email Address", escreva **rafaelachagas@seuinfluencer.com.br**
-   (é para esse endereço que os pedidos de orçamento vão chegar)
-3. Clique em "Create Access Key"
-4. Abra o e-mail que chegou e clique no link de confirmação
-5. Copie a chave (parece `1a2b3c4d-5e6f-7890-abcd-ef1234567890`)
-6. Cole no arquivo `.env`, depois de `VITE_WEB3FORMS_KEY=`
+Do zero até rafaelacreator.com no ar com HTTPS.
 
 ---
 
-## 2. Colocar o código no GitHub
+## 1. Criar o repositório no GitHub
+
+1. Entre em **github.com** → botão **+** no canto superior direito → **New repository**
+2. Repository name: `portfolio`
+3. Deixe **Public** (o GitHub Pages de graça só funciona em repositório público)
+4. **NÃO** marque "Add a README" nem nada nessa tela — o projeto já tem tudo
+5. **Create repository**
+
+A página seguinte mostra uns comandos. Ignore, use os daqui de baixo.
+
+---
+
+## 2. Mandar o código
+
+No terminal, dentro da pasta do projeto (`~/Documents/portfolio`):
 
 ```bash
-git init
-git add .
-git commit -m "Portfólio Rafaela Chagas"
+git remote add origin https://github.com/SEU-USUARIO/portfolio.git
+git push -u origin main
 ```
 
-Depois, em **github.com**: New repository → nome `portfolio` → **Private** →
-Create. O GitHub mostra os dois comandos para colar no terminal (`git remote add`
-e `git push`).
+Troque `SEU-USUARIO` pelo seu usuário do GitHub.
 
-O `.env` **não vai** para o GitHub — já está no `.gitignore`. Isso é proposital.
-
----
-
-## 3. Importar na Vercel
-
-1. Entre em **vercel.com** com a conta do GitHub
-2. **Add New → Project**
-3. Escolha o repositório `portfolio` → **Import**
-4. A Vercel reconhece o Vite sozinho. Não mexa em Build Command nem Output Directory.
-5. Antes de clicar em Deploy, abra **Environment Variables** e adicione:
-
-   | Name | Value |
-   | --- | --- |
-   | `VITE_WEB3FORMS_KEY` | a chave que você criou |
-   | `VITE_HCAPTCHA_SITEKEY` | (deixe vazio por enquanto) |
-
-6. **Deploy**. Em um ou dois minutos o site está no ar num endereço `.vercel.app`.
-
-> Mudou alguma variável depois? Settings → Environment Variables → edite →
-> depois **Deployments → ⋯ → Redeploy**. Variável de ambiente só entra no site
-> em um build novo.
+Na primeira vez o Git vai pedir login. Vai abrir o navegador para você autorizar —
+é só entrar na sua conta e confirmar. Se pedir usuário e senha no terminal em vez
+disso, a "senha" não é a sua senha: é um token. Nesse caso:
+github.com → foto do perfil → Settings → Developer settings →
+Personal access tokens → Tokens (classic) → Generate new token →
+marque **repo** e **workflow** → copie e cole como senha.
 
 ---
 
-## 4. Apontar rafaelacreator.com
+## 3. Ligar o GitHub Pages
 
-### Na Vercel
+No repositório: **Settings** → **Pages** (menu da esquerda)
 
-1. Settings → **Domains**
-2. Digite `rafaelacreator.com` → Add
-3. Digite `www.rafaelacreator.com` → Add
-4. A Vercel mostra os registros de DNS que você precisa criar. **Use os valores que
-   ela mostrar na sua tela** — hoje costumam ser estes, mas podem mudar:
+- Em **Source**, escolha **GitHub Actions** (não "Deploy from a branch")
 
-   | Tipo | Nome | Valor |
-   | --- | --- | --- |
-   | A | `@` | `76.76.21.21` |
-   | CNAME | `www` | `cname.vercel-dns.com` |
-
-### No lugar onde você comprou o domínio
-
-(Registro.br, GoDaddy, Hostinger, Namecheap — o painel muda de nome mas a ideia é a mesma)
-
-1. Procure **DNS**, "Zona DNS" ou "Gerenciar DNS"
-2. Apague registros A ou CNAME antigos de `@` e `www` que apontem para outro lugar
-3. Crie os dois registros que a Vercel mostrou
-4. Salve
-
-A propagação leva de alguns minutos a algumas horas. Na Vercel, o domínio sai de
-"Invalid Configuration" para **Valid Configuration** sozinho quando terminar.
-
-### www e HTTPS
-
-Já estão resolvidos, você não precisa fazer nada:
-
-- **www → sem www**: o `vercel.json` tem um redirecionamento 308 permanente
-- **HTTPS**: a Vercel emite o certificado sozinho e redireciona http → https
-- **HSTS**: o `vercel.json` manda o navegador só usar https por 2 anos
+Pronto. O arquivo `.github/workflows/publicar.yml` já está no projeto: a cada
+`git push` ele constrói o site e publica sozinho. Acompanhe na aba **Actions**.
 
 ---
 
-## 5. Conferir depois que estiver no ar
+## 4. Cadastrar a chave do formulário
+
+Sem isso o formulário de orçamento mostra "ainda não foi configurado".
+
+**Primeiro, criar a chave:**
+
+1. Abra **web3forms.com**
+2. Em "Email Address" escreva **rafaelachagas@seuinfluencer.com.br** — é para esse
+   endereço que os pedidos vão chegar
+3. **Create Access Key** e confirme pelo e-mail que chegar
+4. Copie a chave
+
+**Depois, cadastrar no GitHub:**
+
+Repositório → **Settings** → **Secrets and variables** → **Actions** →
+**New repository secret**
+
+| Name | Secret |
+| --- | --- |
+| `VITE_WEB3FORMS_KEY` | a chave que você copiou |
+
+Depois vá em **Actions** → último workflow → **Re-run all jobs**, para o site ser
+reconstruído com a chave.
+
+> Para testar no seu computador, a chave vai no arquivo `.env` (veja `.env.example`).
+> Esse arquivo nunca vai para o GitHub — é proposital.
+
+---
+
+## 5. Apontar rafaelacreator.com
+
+### No GitHub
+
+Settings → Pages → **Custom domain** → escreva `rafaelacreator.com` → **Save**
+
+(O arquivo `CNAME` já é gerado automaticamente a cada build, então esse campo
+costuma se preencher sozinho.)
+
+### No painel onde você comprou o domínio
+
+(Registro.br, GoDaddy, Hostinger — muda o nome, a ideia é a mesma: procure **DNS**
+ou "Zona DNS")
+
+Apague registros A e CNAME antigos de `@` e `www`, e crie estes:
+
+| Tipo | Nome | Valor |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `SEU-USUARIO.github.io` |
+
+São quatro registros A mesmo — é assim que o GitHub distribui.
+
+Leva de alguns minutos a algumas horas. Quando terminar, volte em Settings → Pages
+e marque **Enforce HTTPS**. O certificado é emitido pelo GitHub, de graça.
+
+O `www` passa a redirecionar para o domínio sem www sozinho.
+
+---
+
+## 6. Conferir depois que estiver no ar
 
 | O quê | Onde | Esperado |
 | --- | --- | --- |
-| Headers de segurança | securityheaders.com → `https://rafaelacreator.com` | A ou A+ |
-| Performance | PageSpeed Insights → aba Mobile | acima de 90 |
-| www redireciona | abrir `www.rafaelacreator.com` | cai em `rafaelacreator.com` |
-| http redireciona | abrir `http://rafaelacreator.com` | vira `https://` |
-| Raiz detecta idioma | abrir `rafaelacreator.com` | vai para `/pt` |
-| Formulário | mandar um teste pra si mesma | chega em rafaelachagas@seuinfluencer.com.br |
-
-### Se o securityheaders.com não der A
-
-Quase sempre é cache. Os seis headers estão configurados no `vercel.json`:
-CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy e Permissions-Policy.
-
-Se ele reclamar de **`unsafe-inline` em style-src**: isso é esperado e não derruba
-a nota. O React e o Framer Motion escrevem estilo direto no elemento para animar;
-tirar isso quebraria as animações do site.
-
-Se ele reclamar de **header faltando**: provavelmente o deploy saiu sem o
-`vercel.json`. Confira se o arquivo está no GitHub, na raiz do repositório.
+| Site abre | `rafaelacreator.com` | vai para `/pt` |
+| Inglês | `rafaelacreator.com/en` | abre em inglês |
+| www | `www.rafaelacreator.com` | redireciona |
+| HTTPS | `http://rafaelacreator.com` | vira `https://` |
+| Performance | PageSpeed Insights, aba Mobile | acima de 90 |
+| Formulário | mandar um teste | chega em rafaelachagas@seuinfluencer.com.br |
 
 ---
 
-## 6. Google
+## O que o GitHub Pages não faz
 
-Depois que o domínio estiver funcionando:
+O Pages serve arquivo e **não deixa configurar headers HTTP**. Então estes três
+não existem lá, por mais que estejam no `vercel.json`:
 
-1. **search.google.com/search-console** → adicionar propriedade `rafaelacreator.com`
-2. Em Sitemaps, enviar: `sitemap.xml`
+- `Strict-Transport-Security` (HSTS)
+- `X-Frame-Options` (impede seu site dentro de um iframe alheio)
+- `X-Content-Type-Options`
 
-O `robots.txt` e o `sitemap.xml` já estão prontos com as duas rotas (`/pt` e `/en`)
-e as tags hreflang.
+A CSP continua valendo — está numa meta tag dentro do `index.html`. No
+securityheaders.com isso costuma dar nota **C ou B** em vez de A, e não tem jeito
+no Pages. Se a nota A importar, a Vercel resolve: é importar o mesmo repositório
+lá e os headers do `vercel.json` passam a valer. O projeto funciona nos dois.
+
+---
+
+## Mudou alguma coisa no site?
+
+```bash
+git add -A
+git commit -m "o que você mudou"
+git push
+```
+
+Em um ou dois minutos o site está atualizado. Acompanhe na aba **Actions**.
